@@ -1,0 +1,463 @@
+The system is: Darwin - 13.4.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: ;-fPIC;-DLINUX_EXTRA
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is AppleClang, found in "/Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/3.0.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: ;-fPIC;-DLINUX_EXTRA
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is AppleClang, found in "/Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/3.0.2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec826666722/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec826666722.dir/build.make CMakeFiles/cmTryCompileExec826666722.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec826666722.dir/testCCompiler.c.o
+/usr/bin/cc   -fPIC -DLINUX_EXTRA    -o CMakeFiles/cmTryCompileExec826666722.dir/testCCompiler.c.o   -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec826666722
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec826666722.dir/link.txt --verbose=1
+/usr/bin/cc   -fPIC -DLINUX_EXTRA  -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec826666722.dir/testCCompiler.c.o  -o cmTryCompileExec826666722  
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1328842996/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec1328842996.dir/build.make CMakeFiles/cmTryCompileExec1328842996.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc   -fPIC -DLINUX_EXTRA    -o CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.0.2/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec1328842996
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1328842996.dir/link.txt --verbose=1
+/usr/bin/cc   -fPIC -DLINUX_EXTRA  -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1328842996   
+Apple LLVM version 6.0 (clang-600.0.54) (based on LLVM 3.5svn)
+Target: x86_64-apple-darwin13.4.0
+Thread model: posix
+ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.9.0 -o cmTryCompileExec1328842996 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-241.9
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7m armv7em
+Library search paths:
+	/usr/lib
+	/usr/local/lib
+Framework search paths:
+	/Library/Frameworks/
+	/System/Library/Frameworks/
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1328842996/fast"]
+  ignore line: [/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec1328842996.dir/build.make CMakeFiles/cmTryCompileExec1328842996.dir/build]
+  ignore line: [/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc   -fPIC -DLINUX_EXTRA    -o CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.0.2/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec1328842996]
+  ignore line: [/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1328842996.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc   -fPIC -DLINUX_EXTRA  -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1328842996   ]
+  ignore line: [Apple LLVM version 6.0 (clang-600.0.54) (based on LLVM 3.5svn)]
+  ignore line: [Target: x86_64-apple-darwin13.4.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.9.0 -o cmTryCompileExec1328842996 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Library/Developer/CommandLineTools/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.9.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec1328842996] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec1328842996.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/usr/lib;/usr/local/lib]
+  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a] ==> [/Library/Developer/CommandLineTools/usr/lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
+  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
+  implicit libs: [/Library/Developer/CommandLineTools/usr/lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/usr/lib;/usr/local/lib]
+  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec320546197/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec320546197.dir/build.make CMakeFiles/cmTryCompileExec320546197.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec320546197.dir/testCXXCompiler.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA    -o CMakeFiles/cmTryCompileExec320546197.dir/testCXXCompiler.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec320546197
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec320546197.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA  -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec320546197.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec320546197  
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2958069240/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2958069240.dir/build.make CMakeFiles/cmTryCompileExec2958069240.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA    -o CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.0.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec2958069240
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2958069240.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA  -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2958069240   
+Apple LLVM version 6.0 (clang-600.0.54) (based on LLVM 3.5svn)
+Target: x86_64-apple-darwin13.4.0
+Thread model: posix
+ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.9.0 -o cmTryCompileExec2958069240 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-241.9
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7m armv7em
+Library search paths:
+	/usr/lib
+	/usr/local/lib
+Framework search paths:
+	/Library/Frameworks/
+	/System/Library/Frameworks/
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec2958069240/fast"]
+  ignore line: [/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2958069240.dir/build.make CMakeFiles/cmTryCompileExec2958069240.dir/build]
+  ignore line: [/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++    -fPIC -DLINUX_EXTRA    -o CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.0.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec2958069240]
+  ignore line: [/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2958069240.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++    -fPIC -DLINUX_EXTRA  -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2958069240   ]
+  ignore line: [Apple LLVM version 6.0 (clang-600.0.54) (based on LLVM 3.5svn)]
+  ignore line: [Target: x86_64-apple-darwin13.4.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.9.0 -o cmTryCompileExec2958069240 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Library/Developer/CommandLineTools/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.9.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec2958069240] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec2958069240.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lc++] ==> lib [c++]
+    arg [-lSystem] ==> lib [System]
+    arg [/Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/usr/lib;/usr/local/lib]
+  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/Library/Developer/CommandLineTools/usr/bin/../lib/clang/6.0/lib/darwin/libclang_rt.osx.a] ==> [/Library/Developer/CommandLineTools/usr/lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
+  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
+  implicit libs: [c++;/Library/Developer/CommandLineTools/usr/lib/clang/6.0/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/usr/lib;/usr/local/lib]
+  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+
+
+Performing C++ SOURCE FILE Test standard_math_library_linked_to_automatically succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec47519211/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec47519211.dir/build.make CMakeFiles/cmTryCompileExec47519211.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec47519211.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -Dstandard_math_library_linked_to_automatically   -o CMakeFiles/cmTryCompileExec47519211.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+/Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx:2:14: warning: ignoring return value of function declared with const attribute [-Wunused-value]
+int main() { std::sin(0.0); std::log(0.0f); }
+             ^~~~~~~~ ~~~
+1 warning generated.
+Linking CXX executable cmTryCompileExec47519211
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec47519211.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -Dstandard_math_library_linked_to_automatically -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec47519211.dir/src.cxx.o  -o cmTryCompileExec47519211  
+
+Source file was:
+#include<cmath>
+int main() { std::sin(0.0); std::log(0.0f); }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_WERROR succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec97074128/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec97074128.dir/build.make CMakeFiles/cmTryCompileExec97074128.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec97074128.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -DCOMPILER_SUPPORT_WERROR   -Werror -o CMakeFiles/cmTryCompileExec97074128.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec97074128
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec97074128.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -DCOMPILER_SUPPORT_WERROR -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec97074128.dir/src.cxx.o  -o cmTryCompileExec97074128  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_pedantic succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2348890188/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2348890188.dir/build.make CMakeFiles/cmTryCompileExec2348890188.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2348890188.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -DCOMPILER_SUPPORT_pedantic -Werror   -pedantic -o CMakeFiles/cmTryCompileExec2348890188.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2348890188
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2348890188.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -DCOMPILER_SUPPORT_pedantic -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2348890188.dir/src.cxx.o  -o cmTryCompileExec2348890188  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wall succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec840827098/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec840827098.dir/build.make CMakeFiles/cmTryCompileExec840827098.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec840827098.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -DCOMPILER_SUPPORT_Wall -Werror   -Wall -o CMakeFiles/cmTryCompileExec840827098.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec840827098
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec840827098.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -DCOMPILER_SUPPORT_Wall -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec840827098.dir/src.cxx.o  -o cmTryCompileExec840827098  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wextra succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec4091550941/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec4091550941.dir/build.make CMakeFiles/cmTryCompileExec4091550941.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec4091550941.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -DCOMPILER_SUPPORT_Wextra -Werror   -Wextra -o CMakeFiles/cmTryCompileExec4091550941.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec4091550941
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4091550941.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -DCOMPILER_SUPPORT_Wextra -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec4091550941.dir/src.cxx.o  -o cmTryCompileExec4091550941  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wundef succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2669709786/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2669709786.dir/build.make CMakeFiles/cmTryCompileExec2669709786.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2669709786.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -DCOMPILER_SUPPORT_Wundef -Werror   -Wundef -o CMakeFiles/cmTryCompileExec2669709786.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2669709786
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2669709786.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -DCOMPILER_SUPPORT_Wundef -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2669709786.dir/src.cxx.o  -o cmTryCompileExec2669709786  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wcastalign succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3826825632/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec3826825632.dir/build.make CMakeFiles/cmTryCompileExec3826825632.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3826825632.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -DCOMPILER_SUPPORT_Wcastalign -Werror   -Wcast-align -o CMakeFiles/cmTryCompileExec3826825632.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3826825632
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3826825632.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -DCOMPILER_SUPPORT_Wcastalign -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3826825632.dir/src.cxx.o  -o cmTryCompileExec3826825632  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wcharsubscripts succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2504388453/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2504388453.dir/build.make CMakeFiles/cmTryCompileExec2504388453.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2504388453.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -DCOMPILER_SUPPORT_Wcharsubscripts -Werror   -Wchar-subscripts -o CMakeFiles/cmTryCompileExec2504388453.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2504388453
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2504388453.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -DCOMPILER_SUPPORT_Wcharsubscripts -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2504388453.dir/src.cxx.o  -o cmTryCompileExec2504388453  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wnonvirtualdtor succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec542996718/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec542996718.dir/build.make CMakeFiles/cmTryCompileExec542996718.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec542996718.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -DCOMPILER_SUPPORT_Wnonvirtualdtor -Werror   -Wnon-virtual-dtor -o CMakeFiles/cmTryCompileExec542996718.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec542996718
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec542996718.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -DCOMPILER_SUPPORT_Wnonvirtualdtor -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec542996718.dir/src.cxx.o  -o cmTryCompileExec542996718  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wpointerarith succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3501232365/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec3501232365.dir/build.make CMakeFiles/cmTryCompileExec3501232365.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3501232365.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -DCOMPILER_SUPPORT_Wpointerarith -Werror   -Wpointer-arith -o CMakeFiles/cmTryCompileExec3501232365.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3501232365
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3501232365.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -DCOMPILER_SUPPORT_Wpointerarith -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec3501232365.dir/src.cxx.o  -o cmTryCompileExec3501232365  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wwritestrings succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1604037583/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec1604037583.dir/build.make CMakeFiles/cmTryCompileExec1604037583.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1604037583.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -DCOMPILER_SUPPORT_Wwritestrings -Werror   -Wwrite-strings -o CMakeFiles/cmTryCompileExec1604037583.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1604037583
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1604037583.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -DCOMPILER_SUPPORT_Wwritestrings -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1604037583.dir/src.cxx.o  -o cmTryCompileExec1604037583  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wformatsecurity succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2087039878/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2087039878.dir/build.make CMakeFiles/cmTryCompileExec2087039878.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2087039878.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -DCOMPILER_SUPPORT_Wformatsecurity -Werror   -Wformat-security -o CMakeFiles/cmTryCompileExec2087039878.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2087039878
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2087039878.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -DCOMPILER_SUPPORT_Wformatsecurity -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2087039878.dir/src.cxx.o  -o cmTryCompileExec2087039878  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wnovariadicmacros succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2342235057/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2342235057.dir/build.make CMakeFiles/cmTryCompileExec2342235057.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2342235057.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -DCOMPILER_SUPPORT_Wnovariadicmacros -Werror   -Wno-variadic-macros -o CMakeFiles/cmTryCompileExec2342235057.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2342235057
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2342235057.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -DCOMPILER_SUPPORT_Wnovariadicmacros -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2342235057.dir/src.cxx.o  -o cmTryCompileExec2342235057  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wnolonglong succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec356156560/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec356156560.dir/build.make CMakeFiles/cmTryCompileExec356156560.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec356156560.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -DCOMPILER_SUPPORT_Wnolonglong -Werror   -Wno-long-long -o CMakeFiles/cmTryCompileExec356156560.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec356156560
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec356156560.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -DCOMPILER_SUPPORT_Wnolonglong -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec356156560.dir/src.cxx.o  -o cmTryCompileExec356156560  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_fnocommon succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2807735429/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2807735429.dir/build.make CMakeFiles/cmTryCompileExec2807735429.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2807735429.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -DCOMPILER_SUPPORT_fnocommon -Werror   -fno-common -o CMakeFiles/cmTryCompileExec2807735429.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2807735429
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2807735429.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -DCOMPILER_SUPPORT_fnocommon -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2807735429.dir/src.cxx.o  -o cmTryCompileExec2807735429  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_fstrictaliasing succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2575936867/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2575936867.dir/build.make CMakeFiles/cmTryCompileExec2575936867.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2575936867.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -DCOMPILER_SUPPORT_fstrictaliasing -Werror   -fstrict-aliasing -o CMakeFiles/cmTryCompileExec2575936867.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2575936867
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2575936867.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -DCOMPILER_SUPPORT_fstrictaliasing -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2575936867.dir/src.cxx.o  -o cmTryCompileExec2575936867  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Qunusedarguments succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1391781166/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec1391781166.dir/build.make CMakeFiles/cmTryCompileExec1391781166.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1391781166.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -DCOMPILER_SUPPORT_Qunusedarguments -Werror   -Qunused-arguments -o CMakeFiles/cmTryCompileExec1391781166.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1391781166
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1391781166.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -DCOMPILER_SUPPORT_Qunusedarguments -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1391781166.dir/src.cxx.o  -o cmTryCompileExec1391781166  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_ansi succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2931571270/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec2931571270.dir/build.make CMakeFiles/cmTryCompileExec2931571270.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2931571270.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -Qunused-arguments -DCOMPILER_SUPPORT_ansi -Werror   -ansi -o CMakeFiles/cmTryCompileExec2931571270.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2931571270
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2931571270.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -Qunused-arguments -DCOMPILER_SUPPORT_ansi -Werror -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec2931571270.dir/src.cxx.o  -o cmTryCompileExec2931571270  
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_OPENMP succeded with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec868545820/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec868545820.dir/build.make CMakeFiles/cmTryCompileExec868545820.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec868545820.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -Qunused-arguments -ansi -DCOMPILER_SUPPORT_OPENMP   -fopenmp -o CMakeFiles/cmTryCompileExec868545820.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec868545820
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec868545820.dir/link.txt --verbose=1
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -Qunused-arguments -ansi -DCOMPILER_SUPPORT_OPENMP -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec868545820.dir/src.cxx.o  -o cmTryCompileExec868545820  
+
+Source file was:
+int main() { return 0; }

@@ -1,0 +1,84 @@
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wunusedlocaltypedefs failed with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1252257191/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec1252257191.dir/build.make CMakeFiles/cmTryCompileExec1252257191.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1252257191.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -DCOMPILER_SUPPORT_Wunusedlocaltypedefs -Werror   -Wunused-local-typedefs -o CMakeFiles/cmTryCompileExec1252257191.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+error: unknown warning option '-Wunused-local-typedefs' [-Werror,-Wunknown-warning-option]
+make[4]: *** [CMakeFiles/cmTryCompileExec1252257191.dir/src.cxx.o] Error 1
+make[3]: *** [cmTryCompileExec1252257191/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wnopsabi failed with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec488261308/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec488261308.dir/build.make CMakeFiles/cmTryCompileExec488261308.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec488261308.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -DCOMPILER_SUPPORT_Wnopsabi -Werror   -Wno-psabi -o CMakeFiles/cmTryCompileExec488261308.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+error: unknown warning option '-Wno-psabi' [-Werror,-Wunknown-warning-option]
+make[4]: *** [CMakeFiles/cmTryCompileExec488261308.dir/src.cxx.o] Error 1
+make[3]: *** [cmTryCompileExec488261308/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_fnochecknew failed with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3873405416/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec3873405416.dir/build.make CMakeFiles/cmTryCompileExec3873405416.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3873405416.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -DCOMPILER_SUPPORT_fnochecknew -Werror   -fno-check-new -o CMakeFiles/cmTryCompileExec3873405416.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: unknown argument: '-fno-check-new'
+make[4]: *** [CMakeFiles/cmTryCompileExec3873405416.dir/src.cxx.o] Error 1
+make[3]: *** [cmTryCompileExec3873405416/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_wd981 failed with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec781048184/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec781048184.dir/build.make CMakeFiles/cmTryCompileExec781048184.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec781048184.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -DCOMPILER_SUPPORT_wd981 -Werror   -wd981 -o CMakeFiles/cmTryCompileExec781048184.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: unknown argument: '-wd981'
+make[4]: *** [CMakeFiles/cmTryCompileExec781048184.dir/src.cxx.o] Error 1
+make[3]: *** [cmTryCompileExec781048184/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_wd2304 failed with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec241994627/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec241994627.dir/build.make CMakeFiles/cmTryCompileExec241994627.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec241994627.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -DCOMPILER_SUPPORT_wd2304 -Werror   -wd2304 -o CMakeFiles/cmTryCompileExec241994627.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: unknown argument: '-wd2304'
+make[4]: *** [CMakeFiles/cmTryCompileExec241994627.dir/src.cxx.o] Error 1
+make[3]: *** [cmTryCompileExec241994627/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_STRICTANSI failed with the following output:
+Change Dir: /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1993291741/fast"
+/Library/Developer/CommandLineTools/usr/bin/make -f CMakeFiles/cmTryCompileExec1993291741.dir/build.make CMakeFiles/cmTryCompileExec1993291741.dir/build
+/usr/local/Cellar/cmake/3.0.2/bin/cmake -E cmake_progress_report /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1993291741.dir/src.cxx.o
+/usr/bin/c++    -fPIC -DLINUX_EXTRA -fexceptions -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wpointer-arith -Wwrite-strings -Wformat-security -Wno-variadic-macros -Wno-long-long -fno-common -fstrict-aliasing -DCOMPILER_SUPPORT_STRICTANSI -Werror   -strict-ansi -o CMakeFiles/cmTryCompileExec1993291741.dir/src.cxx.o -c /Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: unknown argument: '-strict-ansi'
+make[4]: *** [CMakeFiles/cmTryCompileExec1993291741.dir/src.cxx.o] Error 1
+make[3]: *** [cmTryCompileExec1993291741/fast] Error 2
+
+Source file was:
+int main() { return 0; }

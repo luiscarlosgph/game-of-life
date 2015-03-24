@@ -1,0 +1,3 @@
+repository='external project URL'
+module='http://cmic.cs.ucl.ac.uk/platform/dependencies/eigen-eigen-3.2.2.1.tar.bz2'
+tag='MD5=7eb340dd70daa019fcb5dc179f795600'
