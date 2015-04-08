@@ -8,7 +8,6 @@
  */
 
 #include <cstdlib>
-#include <Eigen/Dense>
 
 int main(int argc, char **argv) {
 	
