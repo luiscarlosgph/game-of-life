@@ -12,5 +12,5 @@
 #
 #============================================================================*/
 
-add_executable(GameOfLifeTest test.cpp)
+add_executable(GameOfLifeTest test.cpp ${PROJECT_SOURCE_DIR}/src/board.cpp ${PROJECT_SOURCE_DIR}/src/cell.cpp)
 target_link_libraries(GameOfLifeTest ${Eigen_LIBRARIES} ${Boost_LIBRARIES})

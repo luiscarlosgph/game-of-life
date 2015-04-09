@@ -6,6 +6,7 @@
  */
 
 #include <random>
+#include <list>
 
 // My includes
 #include "board.h"
@@ -40,8 +41,8 @@ Board::Board(const uint32_t rows, const uint32_t cols) {
  * @param[in] row Row where the cell of interest is located.
  * @param[in] col Column where the cell of interest is located.
  */
-bool Board::cell(const uint32_t row, const uint32_t col) const {
-	return m_board[row][col].isAlive();
+Cell Board::cell(const uint32_t row, const uint32_t col) const {
+	return m_board[row][col];
 }
 
 /**
@@ -90,15 +91,15 @@ void Board::evolve() {
 	std::vector<std::vector<Cell> > newBoard;
 	
 	// Re-allocate the memory for the board and set all cells to alive.
-	newBoard.resize(rows);
-	for (uint32_t i = 0; i < rows; i++) {
-		newBoard.resize(cols);
+	newBoard.resize(m_rows);
+	for (uint32_t i = 0; i < m_rows; i++) {
+		newBoard.resize(m_cols);
 	}
 	
 	// Create the new board
 	for (uint32_t i = 0; i < m_rows; i++) {
 		for (uint32_t j = 0; j < m_cols; j++) {
-			uint32_t nAlive = neighboursAlive(i, j);
+			uint32_t nAlive = aliveNeighbours(i, j);
 			if (m_board[i][j].isAlive()) { // If cell is alive
 				if (nAlive == 2 || nAlive == 3)
 					newBoard[i][j].revive();
@@ -123,11 +124,11 @@ void Board::evolve() {
  * @param[in] out Destination stream where the board will be plotted. 
  * @param[in] b   Board to be printed.
  */
-std::ostream& operator<<(std::ostream& out, const Board &b){
+inline std::ostream& operator<<(std::ostream& out, const Board &b){
 	out << std::endl;
-	for (uint32_t i = 0; i < m_rows; i++) {
-		for (uint32_t j = 0; j < m_cols; j++) {
-			if (m_board[i][j].isAlive()) 
+	for (uint32_t i = 0; i < b.m_rows; i++) {
+		for (uint32_t j = 0; j < b.m_cols; j++) {
+			if (b.cell(i, j).isAlive())
 				out << "O ";
 			else
 				out << "X ";
@@ -139,6 +140,55 @@ std::ostream& operator<<(std::ostream& out, const Board &b){
 }
 
 /**
+ * @returns a list with the 8 neighbours of a particular cell.
+ * @param[in] row Row of the cell whose neighbours we want to obtain.
+ * @param[in] col Column of the cell whose neighbours we want to obtain.
+ */
+std::list<Cell> Board::getNeighbours(const uint32_t row, const uint32_t col) const {
+	std::list<Cell> neighbours;
+
+	uint32_t topRow, bottomRow, leftCol, rightCol;	
+	
+	// Checking boundaries, i.e. enforcing toroid
+	if (row == 0) {
+		topRow = m_rows - 1;
+		bottomRow = row + 1;
+	}
+	else {
+		topRow = row - 1;
+		if (row == m_rows - 1)
+			bottomRow = 0;
+		else
+			bottomRow = row + 1;
+	}
+	
+	if (col == 0) {
+		leftCol = m_cols - 1;
+		rightCol = col + 1;	
+	}
+	else {
+		leftCol = col - 1;
+		if (col == m_cols - 1)
+			rightCol = 0;
+		else
+			rightCol = col + 1; 
+	}
+	
+	// Add neighbours to list
+	neighbours.push_back(m_board[topRow][leftCol]);
+	neighbours.push_back(m_board[topRow][col]);
+	neighbours.push_back(m_board[topRow][rightCol]);
+	neighbours.push_back(m_board[row][leftCol]);
+	neighbours.push_back(m_board[row][col]);
+	neighbours.push_back(m_board[row][rightCol]);
+	neighbours.push_back(m_board[bottomRow][leftCol]);
+	neighbours.push_back(m_board[bottomRow][col]);
+	neighbours.push_back(m_board[bottomRow][rightCol]);
+
+	return neighbours;
+}
+
+/**
  * @brief Returns the number of alive neighbours. An 8-neighbourhood is
  *        used. This method considers that the board is a toroid. That is, all 
  *        the cells have exactly 8 neighbours, including the ones located in
@@ -146,27 +196,13 @@ std::ostream& operator<<(std::ostream& out, const Board &b){
  * @param[in] row Row of the cell whose number of neighbours we want to check.
  * @param[in] col Column of the cell whose number of neighbours we want to check.
  */
-uint32_t Board::neighboursAlive(const uint32_t row, const uint32_t col) const {
-	const uint32_t NEIGHBOURHOOD = 8;
-
+uint32_t Board::aliveNeighbours(const uint32_t row, const uint32_t col) const {
 	uint32_t count = 0;
-	uint32_t correctI, correctJ;
+	std::list<Cell> neighbours = getNeighbours(row, col); 	
 
-	for (uint32_t i = row - 1; i < NEIGHBOURHOOD / 2 - 1; i++) {
-		for (uint32_t j = col - 1; j < NEIGHBOURHOOD / 2 - 1; j++) {
-			if (i == row && j == col) // The neighbourhood of a cell does not include the cell
-				continue;
-			
-			// Correcting indeces to avoid being out of boundaries
-			correctI = i < 0 ? m_rows - 1 : i;
-			correctI = correctI > m_rows - 1 ? 0 : correctI;  
-			correctJ = j < 0 ? m_cols - 1 : j;
-			correctJ = correctJ > m_cols - 1 ? 0 : correctJ;
-
-			if (m_board[correctI][correctJ].isAlive())
-				count++;
-		}	
-	}		
+	for (std::list<Cell>::iterator it = neighbours.begin(); it != neighbours.end(); ++it)
+		if (it->isAlive())
+			count++;
 
 	return count;
 }

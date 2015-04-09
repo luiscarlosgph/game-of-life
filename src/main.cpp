@@ -9,7 +9,11 @@
 
 #include <cstdlib>
 
+// My includes 
+#include "gameoflife.h"
+
 int main(int argc, char **argv) {
+	GameOfLife gol;
 	
 	return EXIT_SUCCESS;
 }

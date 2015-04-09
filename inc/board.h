@@ -9,6 +9,7 @@
 #define BOARD_H_
 
 #include <vector>
+#include <list>
 
 // My includes
 #include "cell.h"
@@ -19,7 +20,7 @@ public:
 	Board(const uint32_t rows, const uint32_t cols);
 
 	// Retrieve or change the state of a cell
-	bool cell(const uint32_t row, const uint32_t col) const;
+	Cell cell(const uint32_t row, const uint32_t col) const;
 	void cell(const uint32_t row, const uint32_t col, const bool alive);
 	
 	// Reset the size of the board and re-allocate memory
@@ -32,14 +33,15 @@ public:
 	void evolve();
 
 	// Operators
-	friend ostream& operator<<(ostream &out, Board &b);
+	friend std::ostream& operator<<(std::ostream &out, const Board &b);
 
 private:
-	uint32_t neighboursAlive(const uint32_t row, const uint32_t col) const; 
+	std::list<Cell> getNeighbours(const uint32_t row, const uint32_t col) const;
+	uint32_t aliveNeighbours(const uint32_t row, const uint32_t col) const; 
 
 	uint32_t m_rows;
 	uint32_t m_cols;
 	std::vector<std::vector<Cell> > m_board;
-}
+};
 
 #endif  // BOARD_H_

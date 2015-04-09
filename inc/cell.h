@@ -18,6 +18,6 @@ public:
 
 private:
 	bool m_alive;
-}
+};
 
 #endif  // CELL_H_

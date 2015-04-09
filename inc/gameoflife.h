@@ -20,9 +20,9 @@ class GameOfLife {
 public:
 	GameOfLife();
 	
-	void readConfig(const string &path);
+	void readConfig(const std::string &path);
 	void iterate();
-	void writeOutputFile(const string &path);
+	void writeOutputFile(const std::string &path);
 	
 private:
 	std::stack<Board> m_boardStack;
@@ -30,6 +30,6 @@ private:
 	// FileReader m_fileReader;
 	// FileWriter m_fileWriter;
 
-}
+};
 
 #endif  // GAME_OF_LIFE_H_
