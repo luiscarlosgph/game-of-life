@@ -8,19 +8,28 @@
 #ifndef GAME_OF_LIFE_H_
 #define GAME_OF_LIFE_H_
 
+#include <string>
+#include <stack>
+
 // My includes
 #include "board.h"
-#include "filereader.h"
-#include "filewriter.h"
+// #include "filereader.h"
+// #include "filewriter.h"
 
 class GameOfLife {
 public:
 	GameOfLife();
 	
+	void readConfig(const string &path);
+	void iterate();
+	void writeOutputFile(const string &path);
+	
 private:
-	Board m_board;
-	FileReader m_fileReader;
-	FileWriter m_fileWriter;
+	std::stack<Board> m_boardStack;
+	// Board m_board;
+	// FileReader m_fileReader;
+	// FileWriter m_fileWriter;
+
 }
 
 #endif  // GAME_OF_LIFE_H_

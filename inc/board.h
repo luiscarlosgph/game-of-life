@@ -16,21 +16,29 @@
 class Board {
 public:
 	Board();
-	Board(const size_t rows, const size_t cols);
+	Board(const uint32_t rows, const uint32_t cols);
 
 	// Retrieve or change the state of a cell
-	bool cell(const size_t row, const size_t col) const;
-	void cell(const size_t row, const size_t col, const bool alive);
+	bool cell(const uint32_t row, const uint32_t col) const;
+	void cell(const uint32_t row, const uint32_t col, const bool alive);
 	
 	// Reset the size of the board and re-allocate memory
-	void reset(const size_t rows, const size_t cols);
+	void reset(const uint32_t rows, const uint32_t cols);
+
+	// Fill the board with random alive or dead cells
+	void randomise();
 
 	// Iterate based on Conway's algorithm
 	void evolve();
 
+	// Operators
+	friend ostream& operator<<(ostream &out, Board &b);
+
 private:
-	size_t m_rows;
-	size_t m_cols;
+	uint32_t neighboursAlive(const uint32_t row, const uint32_t col) const; 
+
+	uint32_t m_rows;
+	uint32_t m_cols;
 	std::vector<std::vector<Cell> > m_board;
 }
 
