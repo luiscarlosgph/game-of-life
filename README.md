@@ -54,8 +54,12 @@ $ cmake ..
 
 After the program and the tests have been compiled, execute this command to run the program:
 
+```
 $ build/src/GameOfLife
+```
 
 And this command to run the unit tests:
 
+```
 $ build/test/GameOfLifeTesting
+```
