@@ -5,6 +5,7 @@
  * @date   8 Apr 2015.
  */
 
+#include <iostream>
 #include <random>
 #include <string>
 #include <vector>
@@ -173,33 +174,35 @@ void swap(Board &first, Board &second) { // No throw
 std::istream& operator>>(std::istream &in, Board &b) {
 	std::string line;
 	std::string::iterator it;
-	char c;
-	// std::stringstream sstr;
-	// std::vector<string> strRows;	
 	uint32_t rows, cols;
+	uint32_t i, j;
 
 	// Get rows and columns
-	in >> rows;
-	in >> cols;
+	if (!getline(in, line)) {
+		// TODO: throw exception and exit
+	}
+	rows = std::stoi(line);
+	
+	if (!getline(in, line)) {
+		// TODO: throw exception and exit
+	}
+	cols = std::stoi(line);
 
 	// Resize the board according to the provided new size
 	b.reset(rows, cols);
 
 	// Read board status
-	for (uint32_t i = 0; i < rows; i++) {
+	for (i = 0; i < rows; i++) {
 		// Read a line that represents a row
 		if (!getline(in, line)) {
 			// TODO: throw exception and exit
 		}
-		for (uint32_t j = 0; j < cols; j++) {
-			it = line.begin();
-			c = ' ';
-			while (it != line.end() && c == ' ') {
-				c = *it;	
-				++it;
-			}
-			b.cell(i, j, c == 'O');
+		it = line.begin();
+		for (j = 0; j < cols - 1; j++) {
+			b.cell(i, j, *it == 'O');
+			it += 2; // The character 'O' or 'X' and the following space 
 		}
+		b.cell(i, j, *it == 'O');
 	}
 
 	return in;	
@@ -221,7 +224,8 @@ std::ostream& operator<<(std::ostream& out, const Board &b){
 			else
 				out << "X ";
 		}	
-		out << std::endl;
+		if (i < b.m_rows - 1)
+			out << std::endl;
 	}	
 	return out;
 }
@@ -234,6 +238,37 @@ std::ostream& operator<<(std::ostream& out, const Board &b){
 Board& Board::operator=(Board other) {
 	swap(*this, other);
 	return *this;
+}
+
+/**
+ * @brief Compare two boards. Same size and same state for every cell means
+ *        that the boards are the same.
+ * @param[in] lhs The first board.
+ * @param[in] rhs The second board.
+ */
+bool operator==(const Board &lhs, const Board &rhs) {
+	if (lhs.rows() != rhs.rows())
+		return false;
+
+	if (lhs.columns() != rhs.columns())
+		return false;
+
+	for (uint32_t i = 0; i < lhs.rows(); i++) {
+		for (uint32_t j = 0; j < lhs.columns(); j++) {
+			if (lhs.cell(i, j).isAlive() != rhs.cell(i, j).isAlive())
+				return false;
+		}
+	}
+	return true;
+}
+
+/**
+ * @brief Opposite behaviour to the operator ==.
+ * @param[in] lhs Left hand side board.
+ * @param[in] rhs Right hand side board.
+ */
+bool operator!=(const Board &lhs, const Board &rhs) {
+	return !operator==(lhs, rhs);
 }
 
 /**

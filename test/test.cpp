@@ -9,6 +9,7 @@
 #include "catch.hpp"
 
 #include <iostream>
+#include <sstream>
 
 // My includes
 #include "cell.h"
@@ -36,6 +37,8 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 	
 	Board a;
 	Board b(1000, 1000);
+	std::ofstream outFile;
+	std::ifstream inFile;
 	
 	SECTION("Checking cell access") {
 		b.cell(999, 999, true);
@@ -139,6 +142,66 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 
 	}
 
-	// TODO: test input and output opreators
+	SECTION("Testing stream input opreator >>") {
+		// Create file with a valid representation of the board	
+		const std::string filePath = "/tmp/.input_operator.tmp";
+		outFile.open(filePath);	
+		outFile << "3" << std::endl;
+		outFile << "4" << std::endl;
+		outFile << "O X O X" << std::endl;
+		outFile << "X O X O" << std::endl;
+		outFile << "O X O X" << std::endl;
+		outFile.close();
+		
+		// Read the file using the input operator
+		inFile.open(filePath);
+		inFile >> a;
+		inFile.close();
+		
+		// Test that the read board corresponds to the one in the file
+		REQUIRE(a.cell(0, 0).isAlive() == true);
+		REQUIRE(a.cell(0, 1).isAlive() == false);
+		REQUIRE(a.cell(0, 2).isAlive() == true);
+		REQUIRE(a.cell(0, 3).isAlive() == false);
+		REQUIRE(a.cell(1, 0).isAlive() == false);
+		REQUIRE(a.cell(1, 1).isAlive() == true);
+		REQUIRE(a.cell(1, 2).isAlive() == false);
+		REQUIRE(a.cell(1, 3).isAlive() == true);
+		REQUIRE(a.cell(2, 0).isAlive() == true);
+		REQUIRE(a.cell(2, 1).isAlive() == false);
+		REQUIRE(a.cell(2, 2).isAlive() == true);
+		REQUIRE(a.cell(2, 3).isAlive() == false);
+	}
+
+	SECTION("Testing output operator << and ==") {
+		// Create file with the size and status of a board
+		const std::string filePath = "/tmp/.output_operator.tmp";
+		a.reset(4, 3);
+		a.cell(0, 0, true);
+		a.cell(0, 1, false);
+		a.cell(0, 2, true);
+		a.cell(1, 0, false);
+		a.cell(1, 1, false);
+		a.cell(1, 2, true);
+		a.cell(2, 0, false);
+		a.cell(2, 1, false);
+		a.cell(2, 2, false);
+		a.cell(3, 0, true);
+		a.cell(3, 1, false);
+		a.cell(3, 2, true);
+		outFile.open(filePath);	
+		outFile << "4" << std::endl;
+		outFile << "3" << std::endl;
+		outFile << a;
+		outFile.close();	
+
+		// Read the file using the input operator
+		inFile.open(filePath);
+		inFile >> b;
+		inFile.close();
+
+		// Test that the written and read data are the same
+		REQUIRE(a == b);	
+	}
 
 }

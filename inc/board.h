@@ -45,6 +45,8 @@ public:
 	friend std::istream& operator>>(std::istream &in, Board &b);
 	friend std::ostream& operator<<(std::ostream &out, const Board &b);
 	Board& operator=(Board other);
+	friend bool operator==(const Board &lhs, const Board &rhs);
+	friend bool operator!=(const Board &lhs, const Board &rhs);
 
 private:
 	std::vector<Cell> getNeighbours(const uint32_t row, const uint32_t col) const;
