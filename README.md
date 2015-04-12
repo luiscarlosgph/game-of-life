@@ -44,16 +44,16 @@ appropriate graph showing achieved speedup. Comment on your results.
 
 Execute the following commands in the main directory of the project:
 
-> mkdir build
-> cd build
-> cmake ..
+$ mkdir build
+$ cd build
+$ cmake ..
 
 # Run Instructions
 
 After the program and the tests have been compiled, execute this command to run the program:
 
-> build/src/GameOfLife
+$ build/src/GameOfLife
 
 And this command to run the unit tests:
 
-> build/test/GameOfLifeTesting
+$ build/test/GameOfLifeTesting
