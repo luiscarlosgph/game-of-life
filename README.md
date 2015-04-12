@@ -39,3 +39,21 @@ your report.
 9. Execute your code in parallel on a computer with at least 4 compute cores, and plot an
 appropriate graph showing achieved speedup. Comment on your results. 
 [5 marks]
+
+# Compile Instructions
+
+Execute the following commands in the main directory of the project:
+
+> mkdir build
+> cd build
+> cmake ..
+
+# Run Instructions
+
+After the program and the tests have been compiled, execute this command to run the program:
+
+> build/src/GameOfLife
+
+And this command to run the unit tests:
+
+> build/test/GameOfLifeTesting
