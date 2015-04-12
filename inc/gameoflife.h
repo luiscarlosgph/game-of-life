@@ -9,7 +9,7 @@
 #define GAME_OF_LIFE_H_
 
 #include <string>
-#include <stack>
+#include <list>
 
 // My includes
 #include "board.h"
@@ -25,10 +25,7 @@ public:
 	void writeOutputFile(const std::string &path);
 	
 private:
-	std::stack<Board> m_boardStack;
-	// Board m_board;
-	// FileReader m_fileReader;
-	// FileWriter m_fileWriter;
+	std::list<Board> m_boardHistory;
 
 };
 

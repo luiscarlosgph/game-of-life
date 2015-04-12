@@ -200,7 +200,7 @@ std::istream& operator>>(std::istream &in, Board &b) {
 		it = line.begin();
 		for (j = 0; j < cols - 1; j++) {
 			b.cell(i, j, *it == 'O');
-			it += 2; // The character 'O' or 'X' and the following space 
+			it += 2; // The character 'O' or another character representing a dead cell and the following space 
 		}
 		b.cell(i, j, *it == 'O');
 	}
@@ -222,10 +222,9 @@ std::ostream& operator<<(std::ostream& out, const Board &b){
 			if (b.cell(i, j).isAlive())
 				out << "O ";
 			else
-				out << "X ";
+				out << "  ";
 		}	
-		if (i < b.m_rows - 1)
-			out << std::endl;
+		out << std::endl;
 	}	
 	return out;
 }
