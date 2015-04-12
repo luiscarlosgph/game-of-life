@@ -71,7 +71,31 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 	}
 
 	SECTION("Checking evolve()") {
+		/*
+		
+		Remember that we are using a toroid!
+
+		Test A
+		======
+		 _____      _____
+		|O|O|O|    |X|X|X|
+      |O|O|X| => |X|X|X|
+		|X|X|O|    |X|X|X|
+		 -----      -----
+		
+		Test B
+		======
+		 _____      _____
+		|O|X|X|    |O|X|X|
+		|O|X|O| => |O|X|O|
+		|O|X|X|    |O|X|O|
+		 -----      -----
+
+		*/
+
 		a.reset(3, 3);
+
+		// Test A
 		a.cell(0, 0, true);
 		a.cell(0, 1, true);
 		a.cell(0, 2, true);
@@ -82,15 +106,37 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 		a.cell(2, 1, false);
 		a.cell(2, 2, true);
 		a.evolve();
-		REQUIRE(a.cell(0, 0).isAlive() == true);
+		REQUIRE(a.cell(0, 0).isAlive() == false);
 		REQUIRE(a.cell(0, 1).isAlive() == false);
-		REQUIRE(a.cell(0, 2).isAlive() == true);
-		REQUIRE(a.cell(1, 0).isAlive() == true);
+		REQUIRE(a.cell(0, 2).isAlive() == false);
+		REQUIRE(a.cell(1, 0).isAlive() == false);
 		REQUIRE(a.cell(1, 1).isAlive() == false);
 		REQUIRE(a.cell(1, 2).isAlive() == false);
 		REQUIRE(a.cell(2, 0).isAlive() == false);
-		REQUIRE(a.cell(2, 1).isAlive() == true);
+		REQUIRE(a.cell(2, 1).isAlive() == false);
 		REQUIRE(a.cell(2, 2).isAlive() == false);
+		
+		// Test B
+		a.cell(0, 0, true);
+		a.cell(0, 1, false);
+		a.cell(0, 2, false);
+		a.cell(1, 0, true);
+		a.cell(1, 1, false);
+		a.cell(1, 2, true);
+		a.cell(2, 0, true); 
+		a.cell(2, 1, false);
+		a.cell(2, 2, false);
+		a.evolve();
+		REQUIRE(a.cell(0, 0).isAlive() == true);
+		REQUIRE(a.cell(0, 1).isAlive() == false);
+		REQUIRE(a.cell(0, 2).isAlive() == false);
+		REQUIRE(a.cell(1, 0).isAlive() == true);
+		REQUIRE(a.cell(1, 1).isAlive() == false);
+		REQUIRE(a.cell(1, 2).isAlive() == true);
+		REQUIRE(a.cell(2, 0).isAlive() == true);
+		REQUIRE(a.cell(2, 1).isAlive() == false);
+		REQUIRE(a.cell(2, 2).isAlive() == false);
+
 	}
 
 	// TODO: test input and output opreators

@@ -27,6 +27,8 @@ Board::Board() : m_rows(0), m_cols(0) {
  * @param[in] cols Desired number of columns.
  */
 Board::Board(const uint32_t rows, const uint32_t cols) {
+	reset(rows, cols);
+	/*
 	m_rows = rows;
 	m_cols = cols;
 	
@@ -35,6 +37,23 @@ Board::Board(const uint32_t rows, const uint32_t cols) {
 	for (uint32_t i = 0; i < rows; i++) {
 		m_board[i].resize(cols);
 	}
+	*/
+}
+
+/**
+ * @brief Copy constructor.
+ * @param[in] other Source Board for the copy.
+ */
+Board::Board(const Board &other) : m_rows(other.m_rows), m_cols(other.m_cols) {
+	m_board = other.m_board;
+}
+
+/**
+ * @brief Move constructor.
+ * @param[in] other Object that will be moved to this one.
+ */
+Board::Board(Board &&other) {
+	swap(*this, other);
 }
 
 /**
@@ -118,15 +137,33 @@ void Board::evolve() {
 	}
 	
 	// Update current board
-	m_board = newBoard; 
+	swap(*this, newBoard);
 }
 
 /**
- * @brief The board is copied to this object. New memory is allocated (unless self-assignment).
- * @param[in] other Source object for the copy.
- * @returns the new
- // TODO: operator =
+ * @returns the number of rows of the board.
  */
+uint32_t Board::rows() const {
+	return m_rows;
+}
+
+/**
+ * @returns the number of columns of the board.
+ */
+uint32_t Board::columns() const {
+	return m_cols;
+}
+
+/**
+ * @brief Swap operation for the Board class. Exchanges the data of two Board objects.
+ * @param[in] first  Board to be swapped.
+ * @param[in] second Board to be swapped.
+ */
+void swap(Board &first, Board &second) { // No throw
+	std::swap(first.m_rows, second.m_rows); 
+	std::swap(first.m_cols, second.m_cols);
+	std::swap(first.m_board, second.m_board);
+}
 
 /**
  * @brief Obtain board from input stream.
@@ -190,17 +227,13 @@ std::ostream& operator<<(std::ostream& out, const Board &b){
 }
 
 /**
- * @returns the number of rows of the board.
+ * @brief The board is copied to this object. New memory is allocated (unless self-assignment).
+ * @param[in] other Source object for the copy.
+ * @returns the new 
  */
-uint32_t Board::rows() const {
-	return m_rows;
-}
-
-/**
- * @returns the number of columns of the board.
- */
-uint32_t Board::columns() const {
-	return m_cols;
+Board& Board::operator=(Board other) {
+	swap(*this, other);
+	return *this;
 }
 
 /**
@@ -243,7 +276,7 @@ std::vector<Cell> Board::getNeighbours(const uint32_t row, const uint32_t col) c
 	neighbours.push_back(m_board[topRow][col]);
 	neighbours.push_back(m_board[topRow][rightCol]);
 	neighbours.push_back(m_board[row][leftCol]);
-	neighbours.push_back(m_board[row][col]);
+	// neighbours.push_back(m_board[row][col]);
 	neighbours.push_back(m_board[row][rightCol]);
 	neighbours.push_back(m_board[bottomRow][leftCol]);
 	neighbours.push_back(m_board[bottomRow][col]);
