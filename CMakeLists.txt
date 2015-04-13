@@ -119,10 +119,10 @@ message("CMAKE_BINARY_DIR=${CMAKE_BINARY_DIR}")
 ######################################################################
 # Find Eigen.
 ######################################################################
-include("cmake/Eigen.cmake")
-find_package(Eigen REQUIRED)
-include_directories(${Eigen_INCLUDE_DIR})
-message("Loading Eigen from ${Eigen_INCLUDE_DIR}")
+#include("cmake/Eigen.cmake")
+#find_package(Eigen REQUIRED)
+#include_directories(${Eigen_INCLUDE_DIR})
+#message("Loading Eigen from ${Eigen_INCLUDE_DIR}")
 
 ######################################################################
 # Find Boost.
@@ -133,9 +133,9 @@ message("Loading Eigen from ${Eigen_INCLUDE_DIR}")
 #else()
 #  set(Boost_USE_STATIC_LIBS ON)
 #endif()
-#find_package(Boost 1.56 COMPONENTS filesystem system date_time regex thread iostreams program_options REQUIRED)
-#include_directories(${Boost_INCLUDE_DIRS})
-#link_directories(${Boost_LIBRARY_DIRS})
+find_package(Boost 1.56 COMPONENTS filesystem system date_time regex thread iostreams program_options REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
 
 ######################################################################
 # Output directories, for when compiling, not installing.

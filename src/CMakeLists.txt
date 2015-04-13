@@ -12,5 +12,5 @@
 #
 #============================================================================*/
 
-add_executable(GameOfLife main.cpp gameoflife.cpp board.cpp cell.cpp)
+add_executable(GameOfLife main.cpp gameoflife.cpp board.cpp cell.cpp commandlinereader.cpp)
 target_link_libraries(GameOfLife ${Eigen_LIBRARIES} ${Boost_LIBRARIES})

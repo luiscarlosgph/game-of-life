@@ -222,7 +222,7 @@ std::ostream& operator<<(std::ostream& out, const Board &b){
 			if (b.cell(i, j).isAlive())
 				out << "O ";
 			else
-				out << "  ";
+				out << "X ";
 		}	
 		out << std::endl;
 	}	

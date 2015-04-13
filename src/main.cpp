@@ -10,14 +10,19 @@
 #include <cstdlib>
 
 // My includes 
+#include "commandlinereader.h"
 #include "gameoflife.h"
 
 int main(int argc, char **argv) {
 	GameOfLife gol;
 
+	// Read command line options
+	if(!CommandLineReader::getInstance().processCmdLineOptions(argc, argv))
+		return EXIT_FAILURE;
+
 	// Read initial status of the game
 	try {
-		gol.readConfig("src/input.gol");
+		gol.readConfig(CommandLineReader::getInstance().getInputFilePath());
 	}
 	catch(...) {
 		// TODO
@@ -25,19 +30,18 @@ int main(int argc, char **argv) {
 	}
 
 	// Iterate a certain amount of times
-	for (int i = 0; i < 20; i++) {
+	for (uint32_t i = 0; i < CommandLineReader::getInstance().getNumberOfIterations(); i++) {
 		gol.iterate();	
 	}
 
 	// Write the history of the game in output file
 	try {
-		gol.writeOutputFile("output.gol");
+		gol.writeOutputFile(CommandLineReader::getInstance().getOutputFilePath());
 	}
 	catch(...) {
 		// TODO
 		return EXIT_FAILURE;
 	}
-
 	
 	return EXIT_SUCCESS;
 }

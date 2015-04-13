@@ -8,12 +8,28 @@
 #ifndef COMMAND_LINE_READER_H_
 #define COMMAND_LINE_READER_H_
 
+#include <string>
+
 class CommandLineReader {
 public:
-	CommandLineReader();
+	// Singleton: only one command line
+	static CommandLineReader& getInstance();
+
+	// Getters and setters
+	std::string getInputFilePath() const;
+	std::string getOutputFilePath() const;
+	uint32_t getNumberOfIterations() const;
+	bool processCmdLineOptions(int argc, char **argv);
 	
 private:
+	CommandLineReader();
+	CommandLineReader(CommandLineReader const&) = delete;
+	void operator = (CommandLineReader const&) = delete;
 
-}
+	std::string m_inputPath;
+	std::string m_outputPath;
+	uint32_t m_iter;
+};
+
 
 #endif  // COMMAND_LINE_READER_H_
