@@ -88,12 +88,14 @@ def createVideoFromImages(images, outputFilePath):
 		raise Exception('The temporary folder used to generate the video already exists. Delete it first!')
 	
 	# Save all the pictures in order
+	digits = 9
+	formatStr = '{0:0' + str(digits) + 'd}'
 	for i in xrange(len(images)):
-		cv2.imwrite(temporaryFolder + '/image' + '{0:05d}'.format(i) + '.png', images[i])
+		cv2.imwrite(temporaryFolder + '/image' + formatStr.format(i) + '.png', images[i])
 	
 	# Convert images to video
-	speed = 5
-	retvalue = os.system('ffmpeg -f image2 -r ' + str(speed) + ' -i ' + temporaryFolder + '/image%05d.png -vcodec mpeg4 -y ' + outputFilePath)
+	fps = 5
+	retvalue = os.system('ffmpeg -f image2 -r ' + str(fps) + ' -i ' + temporaryFolder + '/image%0' + str(digits) + 'd.png -vcodec libx264 -pix_fmt yuv420p -crf 15 -y ' + outputFilePath)
 	
 	# Delete temporary folder and its contents
 	shutil.rmtree(temporaryFolder)

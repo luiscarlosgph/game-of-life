@@ -15,7 +15,7 @@
 #include "commandlinereader.h"
 #include "notenoughargumentsexception.h"
 
-CommandLineReader::CommandLineReader() : m_iter(0) {
+CommandLineReader::CommandLineReader() : m_iter(0), m_sizeRandom(0), m_random(false) {
 }
 
 CommandLineReader& CommandLineReader::getInstance() {
@@ -33,6 +33,14 @@ std::string CommandLineReader::getOutputFilePath() const {
 
 uint32_t CommandLineReader::getNumberOfIterations() const {
 	return m_iter;
+}
+
+uint32_t CommandLineReader::getSizeForRandomBoard() const {
+	return m_sizeRandom;
+}
+
+bool CommandLineReader::randomInitialisation() const {
+	return m_random;
 }
 
 /**
@@ -58,6 +66,10 @@ bool CommandLineReader::processCmdLineOptions(int argc, char **argv) {
 																	 "O X O O\n"
 																	 "X X O X\n"
 																	 "O O O X\n"
+																	 "\nOther way to run this program is by using the parameter --random instead\n"
+																	 "of specifying any input file with --input. If --random is used, the number\n"
+																	 "provided represents the size of the board. For example:\n"
+																	 "--random 1000 will create a 1000x1000 randomised board."
 																	 "\nOptions"
 	                                                );
 	desc.add_options()
@@ -65,6 +77,7 @@ bool CommandLineReader::processCmdLineOptions(int argc, char **argv) {
 		("input", boost::program_options::value<std::string>(), "Path to the file with the initial state of the game.")
 		("output", boost::program_options::value<std::string>(), "Path to the output file. The program will write the whole history of the game in this file.")
 		("iter", boost::program_options::value<uint32_t>(), "Number of iterations to execute.")
+		("random", boost::program_options::value<uint32_t>(), "Size of a random initial board.")
 	;
 
 	boost::program_options::variables_map vm;
@@ -77,10 +90,17 @@ bool CommandLineReader::processCmdLineOptions(int argc, char **argv) {
 			std::cout << desc << std::endl;
 			retval = true;
 		}
-		else if (vm.count("input") && vm.count("output") && vm.count("iter")) { // Check and print all mandatory options
+		else if (vm.count("input") && vm.count("output") && vm.count("iter")) { // First way of using the program, an input file specifies the config og the board
 			m_inputPath = vm["input"].as<std::string>();
 			m_outputPath = vm["output"].as<std::string>();
 			m_iter = vm["iter"].as<uint32_t>();
+			retval = true;	
+		}
+		else if (vm.count("random") && vm.count("output") && vm.count("iter")) { // Second way of using the program, a random square board will be created
+			m_sizeRandom = vm["random"].as<uint32_t>();
+			m_outputPath = vm["output"].as<std::string>();
+			m_iter = vm["iter"].as<uint32_t>();
+			m_random = true;
 			retval = true;	
 		}
 		else {

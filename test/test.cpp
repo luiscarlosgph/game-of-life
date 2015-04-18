@@ -14,6 +14,7 @@
 // My includes
 #include "cell.h"
 #include "board.h"
+#include "commandlinereader.h"
 
 // Test Cell class
 TEST_CASE("Successful manipulation of the Cell class", "[Cell]") {

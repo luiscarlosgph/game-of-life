@@ -22,7 +22,10 @@ int main(int argc, char **argv) {
 
 	// Read initial status of the game
 	try {
-		gol.readConfig(CommandLineReader::getInstance().getInputFilePath());
+		if (CommandLineReader::getInstance().randomInitialisation()) 
+			gol.randInit(CommandLineReader::getInstance().getSizeForRandomBoard());	
+		else 
+			gol.readConfig(CommandLineReader::getInstance().getInputFilePath());
 	}
 	catch(...) {
 		// TODO

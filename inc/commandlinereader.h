@@ -19,6 +19,8 @@ public:
 	std::string getInputFilePath() const;
 	std::string getOutputFilePath() const;
 	uint32_t getNumberOfIterations() const;
+	uint32_t getSizeForRandomBoard() const;
+	bool randomInitialisation() const;
 	bool processCmdLineOptions(int argc, char **argv);
 	
 private:
@@ -29,6 +31,8 @@ private:
 	std::string m_inputPath;
 	std::string m_outputPath;
 	uint32_t m_iter;
+	uint32_t m_sizeRandom;
+	bool m_random;
 };
 
 

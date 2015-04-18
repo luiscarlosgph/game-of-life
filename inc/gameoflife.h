@@ -21,6 +21,7 @@ public:
 	GameOfLife();
 	
 	void readConfig(const std::string &path);
+	void randInit(const uint32_t boardSize);
 	void iterate();
 	void writeOutputFile(const std::string &path);
 	

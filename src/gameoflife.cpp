@@ -10,9 +10,6 @@
 // My includes
 #include "gameoflife.h"
 
-/**
- * TODO
- */
 GameOfLife::GameOfLife() {
 
 }
@@ -30,6 +27,17 @@ void GameOfLife::readConfig(const std::string &path) {
 	inFile.close();
 	m_boardHistory.push_back(b);
 }
+
+/**
+ * @brief Same as readConfig but instead of reading the configuration from a file the
+ *        user specifies the size of a square board and it is randomly initialised.
+ * @param[in] boardSize Size of the board in rows (or columns, it will be a square).
+ */
+ void GameOfLife::randInit(const uint32_t boardSize) {
+ 	Board b(boardSize, boardSize);
+	b.randomise();	
+	m_boardHistory.push_back(b);
+ }
 
 /**
  * @brief Runs an iteration of the Conway's algorithm.
