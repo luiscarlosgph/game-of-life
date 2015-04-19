@@ -6,13 +6,24 @@ Game of Life coursework for the module Research Computing with C++.
 
 This program requires:
 
-	1) g++ with C++11 and OpenMP support. There is a binary of g++ with OpenMP support in 
-	   '/usr/local/bin/g++' ready to be used by this project.
-	   
-		For MAC OS X users: find more information on how to comply with this pre-requisite in 
-		the file 'extras/gcc-4.9-bin/README.md'
+	- g++ with C++11 and OpenMP support. That is, there must exist a binary of g++ with OpenMP
+	   support in '/usr/local/bin/g++'.
+	  
+	- For MAC OS X users: the folder 'extras/gcc-4.9-bin/' contains the binaries for gcc and g++ 
+	  version 4.9 with OpenMP support for Mac OS X Mavericks and Yosemite downloaded from 
+	  
+	  http://hpc.sourceforge.net/
 
-	2) Boost. Headers present in '/usr/local/include/boost' and dynamic linking libraries in '/usr/local/lib'. 	
+	  In order to install them in your system run the following commands:
+
+	  ```
+	  $ cd extras/gcc-4.9-bin
+	  $ mkdir workdir
+	  $ cp gcc-4.9-bin.tar.gz workdir/
+	  $ cd workdir
+	  $ tar -xzf gcc-4.9-bin.tar.gz
+	  $ sudo rsync -vah usr/* /usr/
+	  ```
 
 # Compile
 

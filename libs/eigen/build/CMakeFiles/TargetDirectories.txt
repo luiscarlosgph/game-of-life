@@ -1,3 +1,0 @@
-/Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/bench/spbench/CMakeFiles/spbenchsolver.dir
-/Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/bench/spbench/CMakeFiles/spsolver.dir
-/Volumes/DATA/coursework1/research-computing-with-cpp-demo-build/Eigen/ab1a5/build/bench/spbench/CMakeFiles/test_sparseLU.dir
