@@ -44,6 +44,11 @@ if (NOT ${CMAKE_VERSION} VERSION_LESS "3.1")
 endif ()
 
 ######################################################################
+# Add C++11 and OpenMP support
+######################################################################
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -fopenmp")
+
+######################################################################
 # We have a super-build option to download Eigen, Boost, ITK.
 ######################################################################
 #option(BUILD_SUPERBUILD "Build GAME_OF_LIFE and the projects it depends on via SuperBuild.cmake." ON)
@@ -133,9 +138,11 @@ message("CMAKE_BINARY_DIR=${CMAKE_BINARY_DIR}")
 #else()
 #  set(Boost_USE_STATIC_LIBS ON)
 #endif()
-find_package(Boost 1.56 COMPONENTS filesystem system date_time regex thread iostreams program_options REQUIRED)
+find_package(Boost 1.57 COMPONENTS filesystem system date_time regex thread iostreams program_options REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
+message("Boost_INCLUDE_DIRS=${Boost_INCLUDE_DIRS}")
+message("Boost_LIBRARY_DIRS=${Boost_LIBRARY_DIRS}")
 
 ######################################################################
 # Output directories, for when compiling, not installing.

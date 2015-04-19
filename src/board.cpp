@@ -9,6 +9,7 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <omp.h>
 
 // My includes
 #include "board.h"
@@ -119,6 +120,7 @@ void Board::evolve() {
 	Board newBoard(m_rows, m_cols);
 	
 	// Create the new board
+	#pragma omp parallel for
 	for (uint32_t i = 0; i < m_rows; i++) {
 		for (uint32_t j = 0; j < m_cols; j++) {
 			uint32_t nAlive = aliveNeighbours(i, j);
