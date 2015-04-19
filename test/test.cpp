@@ -65,8 +65,8 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 		a.reset(10, 10);				
 		bool atLeastOneDead = false;
 		a.randomise();
-		for (int i = 0; i < a.rows(); i++) {
-			for (int j = 0; j < a.columns(); j++) {
+		for (uint32_t i = 0; i < a.rows(); i++) {
+			for (uint32_t j = 0; j < a.columns(); j++) {
 				if (!a.cell(i, j).isAlive())
 					atLeastOneDead = true;
 			}	
