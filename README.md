@@ -2,13 +2,19 @@
 
 Game of Life coursework for the module Research Computing with C++.
 
+# Pre-requisites
+
+This program requires:
+
+	1) g++ with C++11 and OpenMP support. There is a binary of g++ with OpenMP support in 
+	   '/usr/local/bin/g++' ready to be used by this project.
+	   
+		For MAC OS X users: find more information on how to comply with this pre-requisite in 
+		the file 'extras/gcc-4.9-bin/README.md'
+
+	2) Boost. Headers present in '/usr/local/include/boost' and dynamic linking libraries in '/usr/local/lib'. 	
+
 # Compile
-
-Pre-requisites: this program requires g++ with OpenMP support. Therefore, it assumes that there is a
-                binary of g++ with OpenMP support in /usr/local/bin/g++ ready to be used by this
-					 project.
-
-MAC OS X: find more information on how to comply with the pre-requisite in extras/gcc-4.9-bin/README.md
 
 Execute the following commands in the main directory of the project:
 
@@ -19,6 +25,7 @@ $ ./compile.sh
 The compile process has been tested in: 
 
 	- Mac OS X 10.9.5
+	- Ubuntu 14.04
 
 # Run Unit Tests (optional)
 
