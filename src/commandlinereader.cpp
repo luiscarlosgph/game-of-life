@@ -74,8 +74,13 @@ bool CommandLineReader::processCmdLineOptions(int argc, char **argv) {
 		"\nOther way to run this program is by using the parameter --random instead\n"
 		"of specifying any input file with --input. If --random is used, the number\n"
 		"provided represents the size of the board. For example:\n"
-		"--random 1000 will create a 1000x1000 randomised board."
-		"\nOptions:"
+		"--random 1000 will create a 1000x1000 randomised board.\n"
+		"\nOptions:\n"
+		"--help   | -h   Prints help message.\n"
+		"--input  | -i   Path to the file with the domain size and the initial state of the game.\n"
+		"--output | -o   Path to the output file. The program will write the whole history of the game in this file.\n"
+		"--niter  | -n   Number of iterations to execute.\n"
+		"--random | -r   Size of a random initial board.\n"
 	);
 
 	// Lightweight options parser, boost::program_options is a nightmare to compile with GCC in MAC OS X
@@ -104,10 +109,10 @@ bool CommandLineReader::processCmdLineOptions(int argc, char **argv) {
 			m_iter = options["niter"].as<uint32_t>();
 			retval = true;	
 		}
-		else if (options.count("random") && options.count("output") && options.count("iter")) { // Second way of using the program, a random square board will be created
+		else if (options.count("random") && options.count("output") && options.count("niter")) { // Second way of using the program, a random square board will be created
 			m_sizeRandom = options["random"].as<uint32_t>();
 			m_outputPath = options["output"].as<std::string>();
-			m_iter = options["iter"].as<uint32_t>();
+			m_iter = options["niter"].as<uint32_t>();
 			m_random = true;
 			retval = true;	
 		}

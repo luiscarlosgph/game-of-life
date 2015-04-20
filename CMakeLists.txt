@@ -46,7 +46,7 @@ endif ()
 ######################################################################
 # Add C++11 and OpenMP support
 ######################################################################
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -fopenmp")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -fopenmp -O3")
 
 ######################################################################
 # We have a super-build option to download Eigen, Boost, ITK.
