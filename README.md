@@ -52,8 +52,9 @@ $ bin/GameOfLifeTest
 After the program and the tests have been compiled, execute this command to run the program:
 
 ```
-$ bin/GameOfLife --input test/input.txt --output output.txt
-$ bin/GameOfLife --random 100 --output output.txt
+$ bin/GameOfLife --input test/input.txt --output output.txt --niter 100
+$ bin/GameOfLife --random 100 --output output.txt --niter 100
+$ python extras/txt_to_video.py output.txt output.mp4
 ```
 
 # Results
