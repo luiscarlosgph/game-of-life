@@ -16,14 +16,12 @@ This program requires:
 
 	  In order to install them in your system run the following commands:
 
-	  ```
 	  $ cd extras/gcc-4.9-bin
 	  $ mkdir workdir
 	  $ cp gcc-4.9-bin.tar.gz workdir/
 	  $ cd workdir
 	  $ tar -xzf gcc-4.9-bin.tar.gz
 	  $ sudo rsync -vah usr/* /usr/
-	  ```
 
 # Compile
 
