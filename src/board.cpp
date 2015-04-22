@@ -180,14 +180,11 @@ std::istream& operator>>(std::istream &in, Board &b) {
 	uint32_t i, j;
 
 	// Get rows and columns
-	if (!getline(in, line)) {
-		// TODO: throw exception and exit
-	}
+	if (!getline(in, line))
+		throw CouldNotReadNumberOfRows(); 		
 	rows = std::stoi(line);
-	
-	if (!getline(in, line)) {
-		// TODO: throw exception and exit
-	}
+	if (!getline(in, line)) 
+		throw CouldNotReadNumberOfColumns(); 		
 	cols = std::stoi(line);
 
 	// Resize the board according to the provided new size
@@ -196,9 +193,8 @@ std::istream& operator>>(std::istream &in, Board &b) {
 	// Read board status
 	for (i = 0; i < rows; i++) {
 		// Read a line that represents a row
-		if (!getline(in, line)) {
-			// TODO: throw exception and exit
-		}
+		if (!getline(in, line)) 
+			throw CouldNotReadRow(i);
 		it = line.begin();
 		for (j = 0; j < cols - 1; j++) {
 			b.cell(i, j, *it == 'O');

@@ -23,12 +23,12 @@ This program requires:
 	  $ tar -xzf gcc-4.9-bin.tar.gz
 	  $ sudo rsync -vah usr/* /usr/
 
-# Compile
+# Build Instructions
 
 Execute the following commands in the main directory of the project:
 
 ```
-$ ./compile.sh
+$ ./build.sh
 ```
 
 The compile process has been tested in: 
