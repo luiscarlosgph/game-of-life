@@ -12,23 +12,33 @@
 // My includes 
 #include "commandlinereader.h"
 #include "gameoflife.h"
+#include "exception.h"
 
 int main(int argc, char **argv) {
 	GameOfLife gol;
 
-	// Read command line options
-	if(!CommandLineReader::getInstance().processCmdLineOptions(argc, argv))
-		return EXIT_FAILURE;
-
-	// Read initial status of the game
 	try {
+		// Read command line options
+		CommandLineReader::getInstance().processCmdLineOptions(argc, argv);
+
+		// If the user asks for help (i.e. --help or -h) print help and close program
+		if (CommandLineReader::getInstance().justHelp()) {
+			CommandLineReader::getInstance().printUsage(std::cout);
+			return EXIT_SUCCESS;
+		}
+		
+		// Check if the user wants a random board or provides an input file with the initial status of the game 
 		if (CommandLineReader::getInstance().randomInitialisation()) 
 			gol.randInit(CommandLineReader::getInstance().getSizeForRandomBoard());	
 		else 
 			gol.readConfig(CommandLineReader::getInstance().getInputFilePath());
 	}
-	catch(...) {
-		// TODO
+	catch(const NotEnoughArgumentsException &e) {
+		CommandLineReader::getInstance().printUsage(std::cerr);
+		return EXIT_FAILURE;		
+	}  
+	catch(const std::exception &e) {
+		std::cerr << e.what() << std::endl;
 		return EXIT_FAILURE;	
 	}
 
@@ -41,8 +51,8 @@ int main(int argc, char **argv) {
 	try {
 		gol.writeOutputFile(CommandLineReader::getInstance().getOutputFilePath());
 	}
-	catch(...) {
-		// TODO
+	catch(const std::exception &e) {
+		std::cerr << e.what() << std::endl;
 		return EXIT_FAILURE;
 	}
 	

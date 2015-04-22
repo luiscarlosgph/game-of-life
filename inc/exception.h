@@ -39,12 +39,23 @@ class CouldNotReadNumberOfColumns: public std::exception {
  *        because the number of rows has been previously read.
  */
 class CouldNotReadRow: public std::exception {
+public:
 	CouldNotReadRow(uint32_t row) : m_row(row) {}
 	virtual const char* what() const throw() {
 		return std::string("ERROR! Could not read the row no. " + std::to_string(m_row) + " from the input file provided.").c_str();
 	}
-	private:
-		uint32_t m_row;	
+	uint32_t m_row;	
 };
+
+/**
+ * @class  NotEnoughArgumentsException represents an exception that occurs when 
+ *         the user calls the GameOfLife program without providing the enough 
+ *         parameters.
+ */
+class NotEnoughArgumentsException: public std::exception {
+public:
+	virtual const char* what() const throw() {
+		return "ERROR! Not enough arguments provided to the program.";
+	}
 
 #endif // EXCEPTION_H_

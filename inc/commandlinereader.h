@@ -8,6 +8,7 @@
 #ifndef COMMAND_LINE_READER_H_
 #define COMMAND_LINE_READER_H_
 
+#include <iostream>
 #include <string>
 
 class CommandLineReader {
@@ -20,19 +21,23 @@ public:
 	std::string getOutputFilePath() const;
 	uint32_t getNumberOfIterations() const;
 	uint32_t getSizeForRandomBoard() const;
+	bool justHelp() const; 
 	bool randomInitialisation() const;
-	bool processCmdLineOptions(int argc, char **argv);
+	void processCmdLineOptions(int argc, char **argv);
+	void printUsage(ostream &stream) const;
 	
 private:
 	CommandLineReader();
 	CommandLineReader(CommandLineReader const&) = delete;
 	void operator = (CommandLineReader const&) = delete;
 
+	static const std::string kUsageMsg;
 	std::string m_inputPath;
 	std::string m_outputPath;
 	uint32_t m_iter;
 	uint32_t m_sizeRandom;
 	bool m_random;
+	bool m_usage;
 };
 
 

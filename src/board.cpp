@@ -13,6 +13,7 @@
 
 // My includes
 #include "board.h"
+#include "exception.h"
 
 /**
  * @brief Default constructor. It initialises the size of the board to zero.
