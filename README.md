@@ -36,13 +36,13 @@ The compile process has been tested in:
 	- Mac OS X 10.9.5
 	- Ubuntu 14.04
 
-# Run Unit Tests (optional)
+# Unit Testing
 
 Execute the following commands in the main directory of the project in order to check the
 correctness of the code.
 
 ```
-$ bin/GameOfLifeTest
+$ ./test.sh 
 ```
 
 # Run the Program 
