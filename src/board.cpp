@@ -66,16 +66,6 @@ Board::Board() : m_rows(0), m_cols(0) {
  */
 Board::Board(const uint32_t rows, const uint32_t cols) {
 	reset(rows, cols);
-	/*
-	m_rows = rows;
-	m_cols = cols;
-	
-	// Re-allocate the memory for the board and set all cells to alive.
-	m_board.resize(rows);
-	for (uint32_t i = 0; i < rows; i++) {
-		m_board[i].resize(cols);
-	}
-	*/
 }
 
 /**
@@ -93,22 +83,6 @@ Board::Board(const Board &other) : m_rows(other.m_rows), m_cols(other.m_cols) {
 Board::Board(Board &&other) {
 	swap(*this, other);
 }
-
-/**
- * @brief Getter to obtain the cells in the board.
- * @returns true if the cell in row and col is alive. 
- * @param[in] row Row where the cell of interest is located.
- * @param[in] col Column where the cell of interest is located.
- */
-/*
-Cell Board::cell(const uint32_t row, const uint32_t col) const {
-	if (row > m_rows - 1)
-		throw IndexOutOfBounds();
-	else if (col > m_cols - 1)
-		throw IndexOutOfBounds();
-	return m_board[row][col];
-}
-*/
 
 /**
  * @brief Retrieves a cell of the board. You will be able to modify the cell
@@ -138,25 +112,6 @@ const Cell& Board::cell(const uint32_t row, const uint32_t col) const {
 		throw IndexOutOfBounds();
 	return m_board[row][col];
 }
-
-/**
- * @brief Modifies the state of a cell to the one provided in the alive parameter.  
- * @param[in] row Row where the cell is located.
- * @param[in] col Column where the cell is located.
- * @param[in] alive New state of the cell.
- */
-/*
-void Board::cell(const uint32_t row, const uint32_t col, const bool alive) {
-	if (row > m_rows - 1)
-		throw IndexOutOfBounds();
-	else if (col > m_cols - 1)
-		throw IndexOutOfBounds();
-	if (alive) 
-		m_board[row][col].revive();
-	else
-		m_board[row][col].die();
-}
-*/
 
 /**
  * Resizes the board (current state is discarded) and re-allocates memory.
@@ -202,38 +157,6 @@ void swap(Board &first, Board &second) { // No throw
 	std::swap(first.m_cols, second.m_cols);
 	std::swap(first.m_board, second.m_board);
 }
-
-/**
- * @brief Iterate the state of the board according to Conway's rules.
- */
-/*
-void Board::evolve() {
-	Board newBoard(m_rows, m_cols);
-	
-	// Create the new board
-	#pragma omp parallel for
-	for (uint32_t i = 0; i < m_rows; i++) {
-		for (uint32_t j = 0; j < m_cols; j++) {
-			uint32_t nAlive = aliveNeighbours(i, j);
-			if (m_board[i][j].isAlive()) { // If cell is alive
-				if (nAlive == 2 || nAlive == 3)
-					newBoard[i][j].revive();
-				else
-					newBoard[i][j].die();
-			}
-			else {                         // If cell is not alive
-				if (nAlive == 3)
-					newBoard[i][j].revive();
-				else
-					newBoard[i][j].die();
-			}
-		}
-	}
-	
-	// Update current board
-	swap(*this, newBoard);
-}
-*/
 
 /**
  * @returns the number of rows of the board.
