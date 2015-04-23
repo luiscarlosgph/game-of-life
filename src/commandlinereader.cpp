@@ -16,7 +16,7 @@
 #include "commandlinereader.h"
 #include "exception.h"
 
-const std::string kUsageMsg( 
+const std::string CommandLineReader::kUsageMsg( 
 	"\nThis program runs Conway's Game of Life (rectangular toroid board).\n"
 	"Provide the input as a file with the number of rows in the first line,\n"
 	"the number of columns in the second line, and the initial state of the\n"
@@ -32,8 +32,11 @@ const std::string kUsageMsg(
 	"O O O X\n"
 	"\nOther way to run this program is by using the parameter --random instead\n"
 	"of specifying any input file with --input. If --random is used, the number\n"
-	"provided represents the size of the board. For example:\n"
-	"--random 1000 will create a 1000x1000 randomised board.\n"
+	"provided represents the size of the board.\n"
+	"\nExamples of valid execution:\n"
+	"   $ GameOfLife --input test/input.txt --output output.txt --niter 100\n"
+	"   $ GameOfLife --random 100 --output output.txt --niter 100\n"
+	"\nNOTE: --random 1000 will create a 1000x1000 randomised board.\n"
 	"\nOptions:\n"
 	"--help   | -h   Prints help message.\n"
 	"--input  | -i   Path to the file with the domain size and the initial state of the game.\n"
@@ -87,7 +90,7 @@ void CommandLineReader::processCmdLineOptions(int argc, char **argv) {
 	const std::string programName = "GameOfLife";
 	
 	// Lightweight options parser, boost::program_options is a nightmare to compile with GCC in MAC OS X
-	cxxopts::Options options(programName, desc);
+	cxxopts::Options options(programName, CommandLineReader::kUsageMsg);
 	
 	options.add_options()
 		("h,help", "Prints this help message.")
@@ -139,6 +142,6 @@ void CommandLineReader::processCmdLineOptions(int argc, char **argv) {
  * @param[in] stream Output stream where the usage message will be printed (e.g. std::cout or std::cerr).
  * @returns nothing. 
  */
-void CommandLineReader::printUsage(ostream &stream) const {
+void CommandLineReader::printUsage(std::ostream &stream) const {
 	stream << CommandLineReader::kUsageMsg << std::endl;
 }

@@ -24,7 +24,7 @@ public:
 	bool justHelp() const; 
 	bool randomInitialisation() const;
 	void processCmdLineOptions(int argc, char **argv);
-	void printUsage(ostream &stream) const;
+	void printUsage(std::ostream &stream) const;
 	
 private:
 	CommandLineReader();

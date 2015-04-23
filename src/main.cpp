@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
 			gol.readConfig(CommandLineReader::getInstance().getInputFilePath());
 	}
 	catch(const NotEnoughArgumentsException &e) {
+		std::cerr << e.what() << std::endl;
 		CommandLineReader::getInstance().printUsage(std::cerr);
 		return EXIT_FAILURE;		
 	}  

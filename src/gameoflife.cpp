@@ -33,7 +33,7 @@ void GameOfLife::readConfig(const std::string &path) {
  *        user specifies the size of a square board and it is randomly initialised.
  * @param[in] boardSize Size of the board in rows (or columns, it will be a square).
  */
- void GameOfLife::randInit(const uint32_t boardSize) {
+void GameOfLife::randInit(const uint32_t boardSize) {
  	Board b(boardSize, boardSize);
 	b.randomise();	
 	m_boardHistory.push_back(b);
@@ -43,9 +43,24 @@ void GameOfLife::readConfig(const std::string &path) {
  * @brief Runs an iteration of the Conway's algorithm.
  */
 void GameOfLife::iterate() {
-	Board b = m_boardHistory.back();
-	b.evolve();
-	m_boardHistory.push_back(b);
+	Board newBoard = m_boardHistory.back();
+
+	// Create the new board
+	#pragma omp parallel for
+	for (uint32_t i = 0; i < newBoard.rows(); i++) {
+		for (uint32_t j = 0; j < newBoard.columns(); j++) {
+			uint32_t nAlive = m_boardHistory.back().aliveNeighbours(i, j);
+			if (m_boardHistory.back()[i][j].isAlive()) { // If cell is alive
+				if (nAlive != 2 && nAlive != 3)
+					newBoard[i][j].die();
+			}
+			else if (nAlive == 3) {                      // If cell is not alive
+					newBoard[i][j].revive();
+			}
+		}
+	}
+
+	m_boardHistory.push_back(newBoard);
 }
 
 /**

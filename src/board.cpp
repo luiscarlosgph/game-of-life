@@ -16,12 +16,47 @@
 #include "exception.h"
 
 /**
+ * @brief Default constructor of the nested (i.e. internal use) class BoardProxy.
+ *        This class is used to allow the user access the cells of the board with
+ *        the syntax Board[i][j].
+ * @param[in] row is a reference to the row of the board that the user selected with
+ *            the first square brackets. The reference will be saved internally as a 
+ *            pointer to the row so that then the user can access to a specific cell 
+ *            in a specific column.
+ */
+Board::BoardProxy::BoardProxy(std::vector<Cell> &row) : m_row(&row) {
+} 
+
+/**
+ * @brief Access to a cell in a specific column of the row provided to this proxy in the
+ *        constructor.
+ * @param[in] col is the column of the cell that the user wants to retrieve.
+ * @returns a reference to the particular cell. This means that the user will be able to 
+ *          modify it.
+ */
+Cell& Board::BoardProxy::operator[](const uint32_t col) {
+	return const_cast<Cell&>(static_cast<const Board::BoardProxy*>(this)->operator[](col));
+}
+
+/**
+ * @brief Access to a constant (i.e. returns constant reference) cell of the board.
+ * @param[in] col is the column where the cell that the user wants to retrieve is located.
+ * @returns a constant reference to the particular cell. The user will be able to create 
+ *          a constant reference pointing to this cell in order to avoid it being modified
+ *          after it has been retrieved.
+ */
+const Cell& Board::BoardProxy::operator[](const uint32_t col) const {
+	if (col > m_row->size() - 1)
+		throw IndexOutOfBounds();
+	return m_row->operator[](col);
+}
+
+/**
  * @brief Default constructor. It initialises the size of the board to zero.
  * The reset method has to be called if this constructor is used (unless)
  * you want a zero-sized board which seems pointless.
  */
 Board::Board() : m_rows(0), m_cols(0) {
-
 }
 
 /**
@@ -60,11 +95,47 @@ Board::Board(Board &&other) {
 }
 
 /**
+ * @brief Getter to obtain the cells in the board.
  * @returns true if the cell in row and col is alive. 
  * @param[in] row Row where the cell of interest is located.
  * @param[in] col Column where the cell of interest is located.
  */
+/*
 Cell Board::cell(const uint32_t row, const uint32_t col) const {
+	if (row > m_rows - 1)
+		throw IndexOutOfBounds();
+	else if (col > m_cols - 1)
+		throw IndexOutOfBounds();
+	return m_board[row][col];
+}
+*/
+
+/**
+ * @brief Retrieves a cell of the board. You will be able to modify the cell
+ *        after fetching it and the changes will be reflected in the board.
+ * @param[in] row where the cell to be retrieved is located.
+ * @param[in] col where the cell to be retrieved is located. 
+ * @returns a reference to the cell of the board indicated in the parameters.
+ */
+Cell& Board::cell(const uint32_t row, const uint32_t col) {
+	if (row > m_rows - 1)
+		throw IndexOutOfBounds();
+	if (col > m_cols - 1)
+		throw IndexOutOfBounds();
+	return m_board[row][col];
+}
+
+/**
+ * @brief Retrieves a cell of the board. As it returns a constant reference
+ *        you will not be able to modified the fetched cell.
+ * @param[in] row where the wanted cell is located.
+ * @param[in] col where the wanted cell is located. 
+ */
+const Cell& Board::cell(const uint32_t row, const uint32_t col) const {
+	if (row > m_rows - 1)
+		throw IndexOutOfBounds();
+	if (col > m_cols - 1)
+		throw IndexOutOfBounds();
 	return m_board[row][col];
 }
 
@@ -74,12 +145,18 @@ Cell Board::cell(const uint32_t row, const uint32_t col) const {
  * @param[in] col Column where the cell is located.
  * @param[in] alive New state of the cell.
  */
+/*
 void Board::cell(const uint32_t row, const uint32_t col, const bool alive) {
+	if (row > m_rows - 1)
+		throw IndexOutOfBounds();
+	else if (col > m_cols - 1)
+		throw IndexOutOfBounds();
 	if (alive) 
 		m_board[row][col].revive();
 	else
 		m_board[row][col].die();
 }
+*/
 
 /**
  * Resizes the board (current state is discarded) and re-allocates memory.
@@ -98,7 +175,7 @@ void Board::reset(const uint32_t rows, const uint32_t cols) {
 }
 
 /**
- * @brief Fills the board with random cells.
+ * @brief Fills the board with random alive or dead cells.
  */
 void Board::randomise() {
 	std::default_random_engine generator;
@@ -115,8 +192,21 @@ void Board::randomise() {
 }
 
 /**
+ * @brief Swap operation for the Board class. Exchanges the data of two Board objects.
+ *        It is used in move constructor and operator =  
+ * @param[in] first  Board to be swapped.
+ * @param[in] second Board to be swapped.
+ */
+void swap(Board &first, Board &second) { // No throw
+	std::swap(first.m_rows, second.m_rows); 
+	std::swap(first.m_cols, second.m_cols);
+	std::swap(first.m_board, second.m_board);
+}
+
+/**
  * @brief Iterate the state of the board according to Conway's rules.
  */
+/*
 void Board::evolve() {
 	Board newBoard(m_rows, m_cols);
 	
@@ -127,15 +217,15 @@ void Board::evolve() {
 			uint32_t nAlive = aliveNeighbours(i, j);
 			if (m_board[i][j].isAlive()) { // If cell is alive
 				if (nAlive == 2 || nAlive == 3)
-					newBoard.cell(i, j, true);
+					newBoard[i][j].revive();
 				else
-					newBoard.cell(i, j, false);
+					newBoard[i][j].die();
 			}
 			else {                         // If cell is not alive
 				if (nAlive == 3)
-					newBoard.cell(i, j, true);
+					newBoard[i][j].revive();
 				else
-					newBoard.cell(i, j, false);
+					newBoard[i][j].die();
 			}
 		}
 	}
@@ -143,6 +233,7 @@ void Board::evolve() {
 	// Update current board
 	swap(*this, newBoard);
 }
+*/
 
 /**
  * @returns the number of rows of the board.
@@ -159,14 +250,22 @@ uint32_t Board::columns() const {
 }
 
 /**
- * @brief Swap operation for the Board class. Exchanges the data of two Board objects.
- * @param[in] first  Board to be swapped.
- * @param[in] second Board to be swapped.
+ * @brief Returns the number of alive neighbours. An 8-neighbourhood is
+ *        used. This method considers that the board is a toroid. That is, all 
+ *        the cells have exactly 8 neighbours, including the ones located in
+ *        the edges.
+ * @param[in] row Row of the cell whose number of neighbours we want to check.
+ * @param[in] col Column of the cell whose number of neighbours we want to check.
  */
-void swap(Board &first, Board &second) { // No throw
-	std::swap(first.m_rows, second.m_rows); 
-	std::swap(first.m_cols, second.m_cols);
-	std::swap(first.m_board, second.m_board);
+uint32_t Board::aliveNeighbours(const uint32_t row, const uint32_t col) const {
+	uint32_t count = 0;
+	std::vector<Cell> neighbours = getNeighbours(row, col); 	
+
+	for (std::vector<Cell>::iterator it = neighbours.begin(); it != neighbours.end(); ++it)
+		if (it->isAlive())
+			count++;
+
+	return count;
 }
 
 /**
@@ -198,10 +297,18 @@ std::istream& operator>>(std::istream &in, Board &b) {
 			throw CouldNotReadRow(i);
 		it = line.begin();
 		for (j = 0; j < cols - 1; j++) {
-			b.cell(i, j, *it == 'O');
+			// b.cell(i, j, *it == Cell::AliveChar);
+			if (*it == Cell::AliveChar)
+				b[i][j].revive();
+			else
+				b[i][j].die();
 			it += 2; // The character 'O' or another character representing a dead cell and the following space 
 		}
-		b.cell(i, j, *it == 'O');
+		// b.cell(i, j, *it == Cell::AliveChar);
+		if (*it == Cell::AliveChar)
+			b[i][j].revive();
+		else
+			b[i][j].die();
 	}
 
 	return in;	
@@ -270,6 +377,24 @@ bool operator!=(const Board &lhs, const Board &rhs) {
 }
 
 /**
+ * @brief Proxy that permits the user to access (or modify) the cells of the board 
+ *        with double square brackets.
+ *        
+ *        Some examples of use: 
+ *           board[i][j].revive()
+ *           board[i][j].die()
+ *           board[i][j].isAlive()
+ *
+ * @param[in] row Row that the user wants to access.
+ * @returns a proxy object that will allow the access to a particular element of the row.
+ */
+Board::BoardProxy Board::operator[](const uint32_t row) {
+	if (row > m_rows - 1)
+		throw IndexOutOfBounds();
+	return Board::BoardProxy(m_board[row]); 
+}
+
+/**
  * @returns a list with the 8 neighbours of a particular cell.
  * @param[in] row Row of the cell whose neighbours we want to obtain.
  * @param[in] col Column of the cell whose neighbours we want to obtain.
@@ -316,23 +441,4 @@ std::vector<Cell> Board::getNeighbours(const uint32_t row, const uint32_t col) c
 	neighbours.push_back(m_board[bottomRow][rightCol]);
 
 	return neighbours;
-}
-
-/**
- * @brief Returns the number of alive neighbours. An 8-neighbourhood is
- *        used. This method considers that the board is a toroid. That is, all 
- *        the cells have exactly 8 neighbours, including the ones located in
- *        the edges.
- * @param[in] row Row of the cell whose number of neighbours we want to check.
- * @param[in] col Column of the cell whose number of neighbours we want to check.
- */
-uint32_t Board::aliveNeighbours(const uint32_t row, const uint32_t col) const {
-	uint32_t count = 0;
-	std::vector<Cell> neighbours = getNeighbours(row, col); 	
-
-	for (std::vector<Cell>::iterator it = neighbours.begin(); it != neighbours.end(); ++it)
-		if (it->isAlive())
-			count++;
-
-	return count;
 }

@@ -42,8 +42,8 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 	std::ifstream inFile;
 	
 	SECTION("Checking cell access") {
-		b.cell(999, 999, true);
-		b.cell(998, 998, false);
+		b[999][999].revive();
+		b[998][998].die();
 		REQUIRE(b.cell(999, 999).isAlive());
 		REQUIRE(!b.cell(998, 998).isAlive());
 	}
@@ -73,8 +73,83 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 		}
 		REQUIRE(atLeastOneDead);
 	}
+	
+	SECTION("Testing stream input opreator >>") {
+		// Create file with a valid representation of the board	
+		const std::string filePath = "/tmp/.input_operator.tmp";
+		outFile.open(filePath);	
+		outFile << "3" << std::endl;
+		outFile << "4" << std::endl;
+		outFile << "O X O X" << std::endl;
+		outFile << "X O X O" << std::endl;
+		outFile << "O X O X" << std::endl;
+		outFile.close();
+		
+		// Read the file using the input operator
+		inFile.open(filePath);
+		inFile >> a;
+		inFile.close();
+		
+		// Test that the read board corresponds to the one in the file
+		REQUIRE(a[0][0].isAlive() == true);
+		REQUIRE(a[0][1].isAlive() == false);
+		REQUIRE(a[0][2].isAlive() == true);
+		REQUIRE(a[0][3].isAlive() == false);
+		REQUIRE(a[1][0].isAlive() == false);
+		REQUIRE(a[1][1].isAlive() == true);
+		REQUIRE(a[1][2].isAlive() == false);
+		REQUIRE(a[1][3].isAlive() == true);
+		REQUIRE(a[2][0].isAlive() == true);
+		REQUIRE(a[2][1].isAlive() == false);
+		REQUIRE(a[2][2].isAlive() == true);
+		REQUIRE(a[2][3].isAlive() == false);
+	}
 
-	SECTION("Checking evolve()") {
+	SECTION("Testing output operator << and ==") {
+		// Create file with the size and status of a board
+		const std::string filePath = "/tmp/.output_operator.tmp";
+		a.reset(4, 3);
+		a[0][0].revive();
+		a[0][1].die();
+		a[0][2].revive();
+		a[1][0].die();
+		a[1][1].die();
+		a[1][2].revive();
+		a[2][0].die();
+		a[2][1].die();
+		a[2][2].die();
+		a[3][0].revive();
+		a[3][1].die();
+		a[3][2].revive();
+		outFile.open(filePath);	
+		outFile << "4" << std::endl;
+		outFile << "3" << std::endl;
+		outFile << a;
+		outFile.close();	
+
+		// Read the file using the input operator
+		inFile.open(filePath);
+		inFile >> b;
+		inFile.close();
+
+		// Test that the written and read data are the same
+		REQUIRE(a == b);	
+	}
+}
+
+TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
+	
+	GameOfLife gol;
+	Board a;
+
+	SECTION("Checking that GameOfLife is able to read domain size and initial state with readConfig()") {
+		// TODO
+		a.reset(10, 5);
+
+	
+	}
+
+	SECTION("Checking that iterate() correctly creates the next generation") {
 		/*
 		
 		Remember that we are using a toroid!
@@ -97,112 +172,52 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 
 		*/
 
-		a.reset(3, 3);
-
 		// Test A
-		a.cell(0, 0, true);
-		a.cell(0, 1, true);
-		a.cell(0, 2, true);
-		a.cell(1, 0, true);
-		a.cell(1, 1, true);
-		a.cell(1, 2, false);
-		a.cell(2, 0, false); 
-		a.cell(2, 1, false);
-		a.cell(2, 2, true);
-		a.evolve();
-		REQUIRE(a.cell(0, 0).isAlive() == false);
-		REQUIRE(a.cell(0, 1).isAlive() == false);
-		REQUIRE(a.cell(0, 2).isAlive() == false);
-		REQUIRE(a.cell(1, 0).isAlive() == false);
-		REQUIRE(a.cell(1, 1).isAlive() == false);
-		REQUIRE(a.cell(1, 2).isAlive() == false);
-		REQUIRE(a.cell(2, 0).isAlive() == false);
-		REQUIRE(a.cell(2, 1).isAlive() == false);
-		REQUIRE(a.cell(2, 2).isAlive() == false);
+		a[0][0].revive();
+		a[0][1].revive();
+		a[0][2].revive();
+		a[1][0].revive();
+		a[1][1].revive();
+		a[1][2].die();
+		a[2][0].die(); 
+		a[2][1].die();
+		a[2][2].revive();
+		// TODO: a.evolve();
+		REQUIRE(a[0][0].isAlive() == false);
+		REQUIRE(a[0][1].isAlive() == false);
+		REQUIRE(a[0][2].isAlive() == false);
+		REQUIRE(a[1][0].isAlive() == false);
+		REQUIRE(a[1][1].isAlive() == false);
+		REQUIRE(a[1][2].isAlive() == false);
+		REQUIRE(a[2][0].isAlive() == false);
+		REQUIRE(a[2][1].isAlive() == false);
+		REQUIRE(a[2][2].isAlive() == false);
 		
 		// Test B
-		a.cell(0, 0, true);
-		a.cell(0, 1, false);
-		a.cell(0, 2, false);
-		a.cell(1, 0, true);
-		a.cell(1, 1, false);
-		a.cell(1, 2, true);
-		a.cell(2, 0, true); 
-		a.cell(2, 1, false);
-		a.cell(2, 2, false);
-		a.evolve();
-		REQUIRE(a.cell(0, 0).isAlive() == true);
-		REQUIRE(a.cell(0, 1).isAlive() == false);
-		REQUIRE(a.cell(0, 2).isAlive() == false);
-		REQUIRE(a.cell(1, 0).isAlive() == true);
-		REQUIRE(a.cell(1, 1).isAlive() == false);
-		REQUIRE(a.cell(1, 2).isAlive() == true);
-		REQUIRE(a.cell(2, 0).isAlive() == true);
-		REQUIRE(a.cell(2, 1).isAlive() == false);
-		REQUIRE(a.cell(2, 2).isAlive() == false);
+		a[0][0].revive();
+		a[0][1].die();
+		a[0][2].die();
+		a[1][0].revive();
+		a[1][1].die();
+		a[1][2].revive();
+		a[2][0].revive(); 
+		a[2][1].die();
+		a[2][2].die();
+		// TODO: a.evolve();
+		REQUIRE(a[0][0].isAlive() == true);
+		REQUIRE(a[0][1].isAlive() == false);
+		REQUIRE(a[0][2].isAlive() == false);
+		REQUIRE(a[1][0].isAlive() == true);
+		REQUIRE(a[1][1].isAlive() == false);
+		REQUIRE(a[1][2].isAlive() == true);
+		REQUIRE(a[2][0].isAlive() == true);
+		REQUIRE(a[2][1].isAlive() == false);
+		REQUIRE(a[2][2].isAlive() == false);
 
 	}
 
-	SECTION("Testing stream input opreator >>") {
-		// Create file with a valid representation of the board	
-		const std::string filePath = "/tmp/.input_operator.tmp";
-		outFile.open(filePath);	
-		outFile << "3" << std::endl;
-		outFile << "4" << std::endl;
-		outFile << "O X O X" << std::endl;
-		outFile << "X O X O" << std::endl;
-		outFile << "O X O X" << std::endl;
-		outFile.close();
-		
-		// Read the file using the input operator
-		inFile.open(filePath);
-		inFile >> a;
-		inFile.close();
-		
-		// Test that the read board corresponds to the one in the file
-		REQUIRE(a.cell(0, 0).isAlive() == true);
-		REQUIRE(a.cell(0, 1).isAlive() == false);
-		REQUIRE(a.cell(0, 2).isAlive() == true);
-		REQUIRE(a.cell(0, 3).isAlive() == false);
-		REQUIRE(a.cell(1, 0).isAlive() == false);
-		REQUIRE(a.cell(1, 1).isAlive() == true);
-		REQUIRE(a.cell(1, 2).isAlive() == false);
-		REQUIRE(a.cell(1, 3).isAlive() == true);
-		REQUIRE(a.cell(2, 0).isAlive() == true);
-		REQUIRE(a.cell(2, 1).isAlive() == false);
-		REQUIRE(a.cell(2, 2).isAlive() == true);
-		REQUIRE(a.cell(2, 3).isAlive() == false);
-	}
-
-	SECTION("Testing output operator << and ==") {
-		// Create file with the size and status of a board
-		const std::string filePath = "/tmp/.output_operator.tmp";
-		a.reset(4, 3);
-		a.cell(0, 0, true);
-		a.cell(0, 1, false);
-		a.cell(0, 2, true);
-		a.cell(1, 0, false);
-		a.cell(1, 1, false);
-		a.cell(1, 2, true);
-		a.cell(2, 0, false);
-		a.cell(2, 1, false);
-		a.cell(2, 2, false);
-		a.cell(3, 0, true);
-		a.cell(3, 1, false);
-		a.cell(3, 2, true);
-		outFile.open(filePath);	
-		outFile << "4" << std::endl;
-		outFile << "3" << std::endl;
-		outFile << a;
-		outFile.close();	
-
-		// Read the file using the input operator
-		inFile.open(filePath);
-		inFile >> b;
-		inFile.close();
-
-		// Test that the written and read data are the same
-		REQUIRE(a == b);	
-	}
+	SECTION("Test that writeOutputFile() works under normal circumstances") {
+		// TODO
+	}	
 
 }

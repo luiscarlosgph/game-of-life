@@ -57,5 +57,17 @@ public:
 	virtual const char* what() const throw() {
 		return "ERROR! Not enough arguments provided to the program.";
 	}
+};
+
+/**
+ * @class  IndexOutOfBounds represents an exception that occurs when 
+ *         an index outside the board is accessed.
+ */
+class IndexOutOfBounds: public std::exception {
+public:
+	virtual const char* what() const throw() {
+		return "ERROR! Tried to access a cell out of bounds.";
+	}
+};
 
 #endif // EXCEPTION_H_

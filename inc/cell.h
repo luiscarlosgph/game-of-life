@@ -10,14 +10,30 @@
 
 class Cell {
 public:
+	
+	// Constants
+	enum class State { Dead, Alive };
+	static const char AliveChar = 'O';
+	static const char DeadChar = 'X';
+
+	// Constructors
 	Cell();
+	Cell(State state);    
+	Cell(const Cell &other); // Copy constructor
+	Cell(Cell &&other);      // Move constructor
 
 	void die();
 	void revive();
 	bool isAlive() const;
 
+	// Method to exchange the data of two cells, used in move constructor and operator =
+	friend void swap(Cell &first, Cell &second); 
+	
+	// Operators
+	Cell& operator=(Cell other);
+	
 private:
-	bool m_alive;
+	State m_state;
 };
 
 #endif  // CELL_H_
