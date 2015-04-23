@@ -70,4 +70,16 @@ public:
 	}
 };
 
+/**
+ * @class  OutputFileAlreadyExists represents an exception that occurs when 
+ *         the specified output file already exists. We do not want to 
+ *         overwrite anything.
+ */
+class OutputFileAlreadyExists: public std::exception {
+public:
+	virtual const char* what() const throw() {
+		return "ERROR! The specified output file already exists.";
+	}
+};
+
 #endif // EXCEPTION_H_

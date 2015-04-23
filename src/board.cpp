@@ -201,6 +201,9 @@ std::istream& operator>>(std::istream &in, Board &b) {
 	std::string::iterator it;
 	uint32_t rows, cols;
 	uint32_t i, j;
+	
+	// Activate exceptions
+	in.exceptions(std::istream::failbit | std::istream::badbit);
 
 	// Get rows and columns
 	if (!getline(in, line))
@@ -220,14 +223,12 @@ std::istream& operator>>(std::istream &in, Board &b) {
 			throw CouldNotReadRow(i);
 		it = line.begin();
 		for (j = 0; j < cols - 1; j++) {
-			// b.cell(i, j, *it == Cell::AliveChar);
 			if (*it == Cell::AliveChar)
 				b[i][j].revive();
 			else
 				b[i][j].die();
 			it += 2; // The character 'O' or another character representing a dead cell and the following space 
 		}
-		// b.cell(i, j, *it == Cell::AliveChar);
 		if (*it == Cell::AliveChar)
 			b[i][j].revive();
 		else
@@ -246,6 +247,9 @@ std::istream& operator>>(std::istream &in, Board &b) {
  * @param[in] b   Board to be printed.
  */
 std::ostream& operator<<(std::ostream& out, const Board &b){
+	// Activate exceptions
+	out.exceptions(std::ostream::failbit | std::ostream::badbit);
+	
 	for (uint32_t i = 0; i < b.m_rows; i++) {
 		for (uint32_t j = 0; j < b.m_cols; j++) {
 			if (b.cell(i, j).isAlive())

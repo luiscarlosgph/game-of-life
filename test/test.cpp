@@ -10,11 +10,13 @@
 
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 
 // My includes
 #include "cell.h"
 #include "board.h"
 #include "commandlinereader.h"
+#include "gameoflife.h"
 
 // Test Cell class
 TEST_CASE("Successful manipulation of the Cell class", "[Cell]") {
@@ -141,12 +143,59 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 	
 	GameOfLife gol;
 	Board a;
+	std::ofstream outFile;
+	std::ifstream inFile;
 
 	SECTION("Checking that GameOfLife is able to read domain size and initial state with readConfig()") {
-		// TODO
-		a.reset(10, 5);
+		const std::string file1 = "/tmp/.file1.tmp";
+		const std::string file2 = "/tmp/.file2.tmp";
+		const std::string file3 = "/tmp/.file3.tmp";
+		a.reset(3, 5);
+		a[0][0].revive();
+		a[0][1].die();
+		a[0][2].revive();
+		a[0][3].revive();
+		a[0][4].revive();
+		a[1][0].die();
+		a[1][1].revive();
+		a[1][2].die();
+		a[1][3].revive();
+		a[1][4].die();
+		a[2][0].die();
+		a[2][1].revive();
+		a[2][2].die();
+		a[2][3].revive();
+		a[2][4].revive();
+		
+		// Write domain size and initial state of the board to file
+		outFile.open(file1);	
+		outFile << "3" << std::endl;
+		outFile << "5" << std::endl;
+		outFile << a;
+		outFile.close();	
 
-	
+		// Read the configuration from the file
+		gol.readConfig(file1);
+
+		// Write the configuration to the output file
+		gol.writeOutputFile(file2);
+
+		// Add trailing line to the input file (because writeOutputFile() also does it)
+		outFile.open(file1);	
+		outFile << std::endl;
+		outFile.close();	
+		
+		// Add domain size to the header of the output file
+		outFile.open(file3);	
+		outFile << "3" << std::endl;
+		outFile << "5" << std::endl;
+		outFile.close();	
+		std::string s = "cat " + file2 + " >> " + file3;
+		system(s.c_str());
+
+		// Compare the two files, they should be the same
+		// TODO
+		// s = "cmp " + file1 + " " + file3;
 	}
 
 	SECTION("Checking that iterate() correctly creates the next generation") {
@@ -171,7 +220,8 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		 -----      -----
 
 		*/
-
+		
+		/*
 		// Test A
 		a[0][0].revive();
 		a[0][1].revive();
@@ -213,11 +263,16 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		REQUIRE(a[2][0].isAlive() == true);
 		REQUIRE(a[2][1].isAlive() == false);
 		REQUIRE(a[2][2].isAlive() == false);
-
+		*/
 	}
 
 	SECTION("Test that writeOutputFile() works under normal circumstances") {
 		// TODO
 	}	
+
+}
+
+TEST_CASE("Test that all the exceptions work", "[exception.h]") {
+	// TODO
 
 }

@@ -9,6 +9,7 @@
 
 // My includes
 #include "gameoflife.h"
+#include "exception.h"
 
 GameOfLife::GameOfLife() {
 
@@ -19,12 +20,14 @@ GameOfLife::GameOfLife() {
  * @param[in] path Path to the file with the initial configuration of the board.
  */
 void GameOfLife::readConfig(const std::string &path) {
-	std::ifstream inFile;
 	Board b;
+	std::ifstream inFile;
+
+	// Activate exceptions
+	inFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	
-	inFile.open(path); // TODO: exception if cannot open file
+	inFile.open(path);
 	inFile >> b;
-	inFile.close();
 	m_boardHistory.push_back(b);
 }
 
@@ -69,10 +72,16 @@ void GameOfLife::iterate() {
  */
 void GameOfLife::writeOutputFile(const std::string &path) {
 	std::ofstream outFile;
+
+	// Activate exceptions
+	outFile.exceptions(std::ofstream::failbit | std::ofstream::badbit);
+
+	// Check if file already exists
+	if (std::ifstream(path))
+		throw OutputFileAlreadyExists();
 	
-	outFile.open(path); // TODO: exception if cannot open file() or if it already exists!
+	outFile.open(path); 
 	for (std::list<Board>::iterator it = m_boardHistory.begin(); it != m_boardHistory.end(); it++) {
 		outFile << *it << std::endl;	
 	}
-	outFile.close();
 }
