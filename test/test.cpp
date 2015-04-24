@@ -194,8 +194,6 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		// Read the configuration from the file
 		gol.readConfig(file1);
 		
-		std::cout << "Hellooooooo" << std::endl; 
-
 		// Write the configuration to the output file
 		gol.writeOutputFile(file2);
 		
@@ -247,7 +245,6 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		*/
 		
 		// Test A
-		/*
 		a.reset(3, 3);
 		a[0][0].revive();
 		a[0][1].revive();
@@ -278,8 +275,13 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		gol.writeOutputFile(filePath);
 		
 		// Read result from file  	
+		std::string line;
 		a.reset(3, 3);
 		inFile.open(filePath);	
+		getline(inFile, line);	
+		getline(inFile, line);	
+		getline(inFile, line);	
+		getline(inFile, line);	
 		inFile >> a;
 		inFile.close();	
 
@@ -295,7 +297,6 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		REQUIRE(a[2][0].isAlive() == false);
 		REQUIRE(a[2][1].isAlive() == false);
 		REQUIRE(a[2][2].isAlive() == false);
-		*/
 		
 		// Test B
 		/*

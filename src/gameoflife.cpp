@@ -114,6 +114,6 @@ void GameOfLife::writeOutputFile(const std::string &path) {
 	
 	outFile.open(path); 
 	for (std::list<Board>::iterator it = m_boardHistory.begin(); it != m_boardHistory.end(); it++) {
-		outFile << *it << std::endl;	
+		outFile << *it << std::endl << std::endl;	
 	}
 }

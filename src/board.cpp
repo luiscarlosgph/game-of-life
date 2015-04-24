@@ -213,9 +213,6 @@ std::istream& operator>>(std::istream &in, Board &b) {
 	std::smatch sm;
 	std::string line;
 	uint32_t i, j;
-	// const std::sregex_token_iterator end;
-	// std::string::iterator it;
-	// uint32_t rows, cols;
 	
 	// Activate IO exceptions
 	in.exceptions(std::istream::failbit | std::istream::badbit);
@@ -232,12 +229,8 @@ std::istream& operator>>(std::istream &in, Board &b) {
 			auto itEnd = std::sregex_iterator();
 			
 			// Sanity check - The number of parsed columns must be equal to the number of columns of the board
-			std::cout << "Line: " << line << std::endl;
-			if (std::distance(itBegin, itEnd) != b.m_cols) {
-				std::cout << "distance: " << std::distance(itBegin, itEnd) << std::endl;
-				std::cout << b.m_cols << std::endl;
+			if (std::distance(itBegin, itEnd) != b.m_cols)
 				throw IncorrectRowSyntax(i);
-			}
 			
 			// Update the columns of the board according to the obtained row
 			j = 0;
@@ -250,25 +243,8 @@ std::istream& operator>>(std::istream &in, Board &b) {
 			}
 		}
 		else {
-			std::cout << "Line: " << line << std::endl;
 			throw IncorrectRowSyntax(i);
 		}
-
-		/*
-		it = line.begin();
-		for (j = 0; j < b.m_cols - 1; j++) {
-			if (*it == Cell::AliveChar)
-				b[i][j].revive();
-			else
-				b[i][j].die();
-			it += 2; // The character 'O' or another character representing a dead cell and the following space 
-		}
-		if (*it == Cell::AliveChar)
-			b[i][j].revive();
-		else
-			b[i][j].die();
-		*/
-
 	}
 
 	return in;	
