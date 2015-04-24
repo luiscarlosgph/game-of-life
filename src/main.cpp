@@ -32,6 +32,13 @@ int main(int argc, char **argv) {
 			gol.randInit(CommandLineReader::getInstance().getSizeForRandomBoard());	
 		else 
 			gol.readConfig(CommandLineReader::getInstance().getInputFilePath());
+		
+		// Iterate a certain amount of times
+		for (uint32_t i = 0; i < CommandLineReader::getInstance().getNumberOfIterations(); i++)
+			gol.iterate();	
+
+		// Write the history of the game in output file
+		gol.writeOutputFile(CommandLineReader::getInstance().getOutputFilePath());
 	}
 	catch(const NotEnoughArgumentsException &e) {
 		std::cerr << e.what() << std::endl;
@@ -43,19 +50,5 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;	
 	}
 
-	// Iterate a certain amount of times
-	for (uint32_t i = 0; i < CommandLineReader::getInstance().getNumberOfIterations(); i++) {
-		gol.iterate();	
-	}
-
-	// Write the history of the game in output file
-	try {
-		gol.writeOutputFile(CommandLineReader::getInstance().getOutputFilePath());
-	}
-	catch(const std::exception &e) {
-		std::cerr << e.what() << std::endl;
-		return EXIT_FAILURE;
-	}
-	
 	return EXIT_SUCCESS;
 }

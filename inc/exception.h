@@ -71,14 +71,37 @@ public:
 };
 
 /**
- * @class  OutputFileAlreadyExists represents an exception that occurs when 
- *         the specified output file already exists. We do not want to 
- *         overwrite anything.
+ * @class IncorrectRowSyntax represents an exception that is raised when one
+ *        of the rows of the input file has an unexpected and incorrect syntax.
  */
-class OutputFileAlreadyExists: public std::exception {
+class IncorrectRowSyntax: public std::exception {
+public:
+	IncorrectRowSyntax(uint32_t row) : m_row(row) {}
+	virtual const char* what() const throw() {
+		return std::string("ERROR! The syntax of the provided row no. " + std::to_string(m_row) + " is incorrect.").c_str();
+	}
+	uint32_t m_row;	
+};
+
+/**
+ * @class IncorrectSyntaxForNumberOfRows represents an exception that is raised 
+ *        when the syntax of the number of rows is not correct. 
+ */
+class IncorrectSyntaxForNumberOfRows: public std::exception {
 public:
 	virtual const char* what() const throw() {
-		return "ERROR! The specified output file already exists.";
+		return "ERROR! The syntax of the number of rows is incorrect.";
+	}
+};
+
+/**
+ * @class IncorrectSyntaxForNumberOfColumns represents an exception that is raised 
+ *        when the syntax of the number of columns is not correct. 
+ */
+class IncorrectSyntaxForNumberOfColumns: public std::exception {
+public:
+	virtual const char* what() const throw() {
+		return "ERROR! The syntax of the number of columns is incorrect.";
 	}
 };
 

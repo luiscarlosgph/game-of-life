@@ -20,6 +20,7 @@ public:
 	class BoardProxy {
 	public:
 		BoardProxy(std::vector<Cell> &row);
+		BoardProxy(const std::vector<Cell> &row);
 		Cell& operator[](const uint32_t col);
 		const Cell& operator[](const uint32_t col) const;
 
@@ -52,6 +53,7 @@ public:
 	friend bool operator==(const Board &lhs, const Board &rhs);
 	friend bool operator!=(const Board &lhs, const Board &rhs);
 	BoardProxy operator[](const uint32_t row);
+	BoardProxy operator[](const uint32_t row) const;
 
 private:
 	std::vector<Cell> getNeighbours(const uint32_t row, const uint32_t col) const;

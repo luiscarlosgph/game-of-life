@@ -79,6 +79,7 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 	SECTION("Testing stream input opreator >>") {
 		// Create file with a valid representation of the board	
 		const std::string filePath = "/tmp/.input_operator.tmp";
+		a.reset(3, 4);
 		outFile.open(filePath);	
 		outFile << "3" << std::endl;
 		outFile << "4" << std::endl;
@@ -88,7 +89,11 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 		outFile.close();
 		
 		// Read the file using the input operator
+		uint32_t rows, cols;
+		std::string line;
 		inFile.open(filePath);
+		getline(inFile, line);
+		getline(inFile, line);
 		inFile >> a;
 		inFile.close();
 		
@@ -110,7 +115,8 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 	SECTION("Testing output operator << and ==") {
 		// Create file with the size and status of a board
 		const std::string filePath = "/tmp/.output_operator.tmp";
-		a.reset(4, 3);
+		a.reset(5, 3);
+		b.reset(5, 3);
 		a[0][0].revive();
 		a[0][1].die();
 		a[0][2].revive();
@@ -123,14 +129,20 @@ TEST_CASE("Successful manipulation of the Board class", "[Board]") {
 		a[3][0].revive();
 		a[3][1].die();
 		a[3][2].revive();
+		a[4][0].revive();
+		a[4][1].die();
+		a[4][2].die();
 		outFile.open(filePath);	
-		outFile << "4" << std::endl;
+		outFile << "5" << std::endl;
 		outFile << "3" << std::endl;
 		outFile << a;
-		outFile.close();	
+		outFile.close();
 
 		// Read the file using the input operator
+		std::string line;
 		inFile.open(filePath);
+		getline(inFile, line);
+		getline(inFile, line);
 		inFile >> b;
 		inFile.close();
 
@@ -145,8 +157,13 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 	Board a;
 	std::ofstream outFile;
 	std::ifstream inFile;
+	std::ifstream inFile2;
 
-	SECTION("Checking that GameOfLife is able to read domain size and initial state with readConfig()") {
+	/**
+	 * Checking that GameOfLife is able to read domain size and initial state with readConfig()
+	 * and also capable of writing the output files correctly.
+	 */
+	SECTION("Checking that readConfig() and writeOutputFile()") {
 		const std::string file1 = "/tmp/.file1.tmp";
 		const std::string file2 = "/tmp/.file2.tmp";
 		const std::string file3 = "/tmp/.file3.tmp";
@@ -176,14 +193,11 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 
 		// Read the configuration from the file
 		gol.readConfig(file1);
+		
+		std::cout << "Hellooooooo" << std::endl; 
 
 		// Write the configuration to the output file
 		gol.writeOutputFile(file2);
-
-		// Add trailing line to the input file (because writeOutputFile() also does it)
-		outFile.open(file1);	
-		outFile << std::endl;
-		outFile.close();	
 		
 		// Add domain size to the header of the output file
 		outFile.open(file3);	
@@ -193,9 +207,20 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		std::string s = "cat " + file2 + " >> " + file3;
 		system(s.c_str());
 
-		// Compare the two files, they should be the same
-		// TODO
-		// s = "cmp " + file1 + " " + file3;
+		// Compare the two files, they should be the same if readConfig() and
+		std::string line, line2;
+		inFile.open(file1);
+		inFile2.open(file3);
+		do {
+			getline(inFile, line);
+			getline(inFile2, line2);
+			REQUIRE(line == line2);
+		} while (!inFile.eof());
+
+		// Remove temporary files
+		remove(file1.c_str());
+		remove(file2.c_str());
+		remove(file3.c_str());
 	}
 
 	SECTION("Checking that iterate() correctly creates the next generation") {
@@ -221,8 +246,9 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 
 		*/
 		
-		/*
 		// Test A
+		/*
+		a.reset(3, 3);
 		a[0][0].revive();
 		a[0][1].revive();
 		a[0][2].revive();
@@ -232,7 +258,34 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		a[2][0].die(); 
 		a[2][1].die();
 		a[2][2].revive();
-		// TODO: a.evolve();
+		
+		// Write domain size and initial state of the board to file
+		std::string filePath("/tmp/.test_iterate.tmp");
+		outFile.open(filePath);	
+		outFile << "3" << std::endl;
+		outFile << "3" << std::endl;
+		outFile << a;
+		outFile.close();	
+
+		// Reag config file
+		gol.readConfig(filePath);
+		remove(filePath.c_str());
+
+		// Create next generation 
+		gol.iterate();
+
+		// Write result to file
+		gol.writeOutputFile(filePath);
+		
+		// Read result from file  	
+		a.reset(3, 3);
+		inFile.open(filePath);	
+		inFile >> a;
+		inFile.close();	
+
+		// Remove temp file
+		remove(filePath.c_str());
+
 		REQUIRE(a[0][0].isAlive() == false);
 		REQUIRE(a[0][1].isAlive() == false);
 		REQUIRE(a[0][2].isAlive() == false);
@@ -242,8 +295,11 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		REQUIRE(a[2][0].isAlive() == false);
 		REQUIRE(a[2][1].isAlive() == false);
 		REQUIRE(a[2][2].isAlive() == false);
+		*/
 		
 		// Test B
+		/*
+		a.reset(3, 3);
 		a[0][0].revive();
 		a[0][1].die();
 		a[0][2].die();
@@ -253,7 +309,33 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		a[2][0].revive(); 
 		a[2][1].die();
 		a[2][2].die();
-		// TODO: a.evolve();
+
+		// Write domain size and initial state of the board to file
+		outFile.open(filePath);	
+		outFile << "3" << std::endl;
+		outFile << "3" << std::endl;
+		outFile << a;
+		outFile.close();	
+
+		// Reag config file
+		gol.readConfig(filePath);
+		remove(filePath.c_str());
+
+		// Create next generation 
+		gol.iterate();
+
+		// Write result to file
+		gol.writeOutputFile(filePath);
+		
+		// Read result from file  	
+		a.reset(3, 3);
+		inFile.open(filePath);	
+		inFile >> a;
+		inFile.close();	
+
+		// Remove temp file
+		remove(filePath.c_str());
+
 		REQUIRE(a[0][0].isAlive() == true);
 		REQUIRE(a[0][1].isAlive() == false);
 		REQUIRE(a[0][2].isAlive() == false);
@@ -266,13 +348,12 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		*/
 	}
 
-	SECTION("Test that writeOutputFile() works under normal circumstances") {
-		// TODO
-	}	
-
 }
 
 TEST_CASE("Test that all the exceptions work", "[exception.h]") {
-	// TODO
+	
+	SECTION("Checking access to an index out of bounds for the Board class") {
+		// TODO	
+	}
 
 }

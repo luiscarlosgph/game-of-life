@@ -6,6 +6,8 @@
  */
 
 #include <fstream>
+#include <regex>
+#include <iostream>
 
 // My includes
 #include "gameoflife.h"
@@ -20,14 +22,44 @@ GameOfLife::GameOfLife() {
  * @param[in] path Path to the file with the initial configuration of the board.
  */
 void GameOfLife::readConfig(const std::string &path) {
+	const std::regex UINT_REGEX("([1-9]\\d*)");
 	Board b;
-	std::ifstream inFile;
+	std::ifstream inFile(path);
+	std::string line;
+	uint32_t rows, cols;
+	std::smatch sm;
 
-	// Activate exceptions
+	// Activate IO exceptions
 	inFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	
-	inFile.open(path);
+	// Sanity check - file is correctly opened
+	if (!inFile.is_open())
+		throw std::runtime_error("ERROR! Unable to open input file -> " + path);
+
+	// Read number of rows
+	if (!getline(inFile, line))
+		throw CouldNotReadNumberOfRows(); 
+	if (!std::regex_match(line, sm, UINT_REGEX)) {
+		std::cout << line << "@@" << std::endl;
+		throw IncorrectSyntaxForNumberOfRows();
+	}
+	rows = (uint32_t)std::stoul(line); 
+
+	// Read number of columns
+	if (!getline(inFile, line)) 
+		throw CouldNotReadNumberOfColumns(); 		
+	if (!std::regex_match(line, sm, UINT_REGEX)) 
+		throw IncorrectSyntaxForNumberOfColumns();
+	cols = (uint32_t)std::stoul(line);
+
+	// Reset the board so that it allocates space for the required rows and columns
+	b.reset(rows, cols);
+
+	// Read the initial state of the board, that is if the state of all cells
 	inFile >> b;
+
+	// Clear the game history and push the board as a the initial board state
+	m_boardHistory.clear();
 	m_boardHistory.push_back(b);
 }
 
@@ -78,7 +110,7 @@ void GameOfLife::writeOutputFile(const std::string &path) {
 
 	// Check if file already exists
 	if (std::ifstream(path))
-		throw OutputFileAlreadyExists();
+		throw std::runtime_error("ERROR! Output file " + path + " already exists.");
 	
 	outFile.open(path); 
 	for (std::list<Board>::iterator it = m_boardHistory.begin(); it != m_boardHistory.end(); it++) {

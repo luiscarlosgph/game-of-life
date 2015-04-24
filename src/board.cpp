@@ -5,11 +5,12 @@
  * @date   8 Apr 2015.
  */
 
-#include <iostream>
 #include <random>
 #include <string>
 #include <vector>
 #include <omp.h>
+#include <regex>
+#include <iostream>
 
 // My includes
 #include "board.h"
@@ -26,6 +27,18 @@
  */
 Board::BoardProxy::BoardProxy(std::vector<Cell> &row) : m_row(&row) {
 } 
+
+/**
+ * @brief Default constructor of the nested (i.e. internal use) class BoardProxy.
+ *        This class is used to allow the user access the cells of the board with
+ *        the syntax Board[i][j]. 
+ * @param[in] row is a reference to the row of the board that the user selected with
+ *            the first square brackets. The reference will be saved internally as a 
+ *            pointer to the row so that then the user can access to a specific cell 
+ *            in a specific column.
+ */
+Board::BoardProxy::BoardProxy(const std::vector<Cell> &row) : m_row(const_cast<std::vector<Cell> *>(&row)) {
+}
 
 /**
  * @brief Access to a cell in a specific column of the row provided to this proxy in the
@@ -46,7 +59,7 @@ Cell& Board::BoardProxy::operator[](const uint32_t col) {
  *          after it has been retrieved.
  */
 const Cell& Board::BoardProxy::operator[](const uint32_t col) const {
-	if (col > m_row->size() - 1)
+	if (m_row->size() == 0 || col > m_row->size() - 1)
 		throw IndexOutOfBounds();
 	return m_row->operator[](col);
 }
@@ -92,9 +105,7 @@ Board::Board(Board &&other) {
  * @returns a reference to the cell of the board indicated in the parameters.
  */
 Cell& Board::cell(const uint32_t row, const uint32_t col) {
-	if (row > m_rows - 1)
-		throw IndexOutOfBounds();
-	if (col > m_cols - 1)
+	if (m_rows == 0 || m_cols == 0 || row > m_rows - 1 || col > m_cols - 1)
 		throw IndexOutOfBounds();
 	return m_board[row][col];
 }
@@ -106,9 +117,7 @@ Cell& Board::cell(const uint32_t row, const uint32_t col) {
  * @param[in] col where the wanted cell is located. 
  */
 const Cell& Board::cell(const uint32_t row, const uint32_t col) const {
-	if (row > m_rows - 1)
-		throw IndexOutOfBounds();
-	if (col > m_cols - 1)
+	if (m_rows == 0 || m_cols == 0 || row > m_rows - 1 || col > m_cols - 1)
 		throw IndexOutOfBounds();
 	return m_board[row][col];
 }
@@ -192,37 +201,62 @@ uint32_t Board::aliveNeighbours(const uint32_t row, const uint32_t col) const {
 }
 
 /**
- * @brief Obtain board from input stream.
+ * @brief Obtain board from input stream. The syntax of the input board is: [OX](\s[OX])*\s?
  * @param[in] in Input stream that will be read.
  * @param[in] b  Board that will modified depending on the contents read from in.
+ * @returns the input string minus the strings corresponding to the extracted board.
  */
 std::istream& operator>>(std::istream &in, Board &b) {
+	const std::string CHARS("[OX]");
+	const std::regex ROW_SPEC_REGEX("^" + CHARS + "(?:\\s" + CHARS + ")*\\s?$");
+	const std::regex ALLOWED_CHARS_REGEX(CHARS);
+	std::smatch sm;
 	std::string line;
-	std::string::iterator it;
-	uint32_t rows, cols;
 	uint32_t i, j;
+	// const std::sregex_token_iterator end;
+	// std::string::iterator it;
+	// uint32_t rows, cols;
 	
-	// Activate exceptions
+	// Activate IO exceptions
 	in.exceptions(std::istream::failbit | std::istream::badbit);
 
-	// Get rows and columns
-	if (!getline(in, line))
-		throw CouldNotReadNumberOfRows(); 		
-	rows = std::stoi(line);
-	if (!getline(in, line)) 
-		throw CouldNotReadNumberOfColumns(); 		
-	cols = std::stoi(line);
-
-	// Resize the board according to the provided new size
-	b.reset(rows, cols);
-
 	// Read board status
-	for (i = 0; i < rows; i++) {
+	for (i = 0; i < b.m_rows; i++) {
 		// Read a line that represents a row
 		if (!getline(in, line)) 
 			throw CouldNotReadRow(i);
+
+		// Parse the retrieved line 
+		if (std::regex_match(line, sm, ROW_SPEC_REGEX)) {
+			auto itBegin = std::sregex_iterator(line.begin(), line.end(), ALLOWED_CHARS_REGEX);
+			auto itEnd = std::sregex_iterator();
+			
+			// Sanity check - The number of parsed columns must be equal to the number of columns of the board
+			std::cout << "Line: " << line << std::endl;
+			if (std::distance(itBegin, itEnd) != b.m_cols) {
+				std::cout << "distance: " << std::distance(itBegin, itEnd) << std::endl;
+				std::cout << b.m_cols << std::endl;
+				throw IncorrectRowSyntax(i);
+			}
+			
+			// Update the columns of the board according to the obtained row
+			j = 0;
+			for (std::sregex_iterator it = itBegin; it != itEnd; it++) {
+				if (it->str() == std::string(1, Cell::AliveChar))
+					b[i][j].revive();
+				else
+					b[i][j].die();
+				j++;
+			}
+		}
+		else {
+			std::cout << "Line: " << line << std::endl;
+			throw IncorrectRowSyntax(i);
+		}
+
+		/*
 		it = line.begin();
-		for (j = 0; j < cols - 1; j++) {
+		for (j = 0; j < b.m_cols - 1; j++) {
 			if (*it == Cell::AliveChar)
 				b[i][j].revive();
 			else
@@ -233,6 +267,8 @@ std::istream& operator>>(std::istream &in, Board &b) {
 			b[i][j].revive();
 		else
 			b[i][j].die();
+		*/
+
 	}
 
 	return in;	
@@ -246,18 +282,27 @@ std::istream& operator>>(std::istream &in, Board &b) {
  * @param[in] out Destination stream where the board will be plotted. 
  * @param[in] b   Board to be printed.
  */
-std::ostream& operator<<(std::ostream& out, const Board &b){
+std::ostream& operator<<(std::ostream& out, const Board &b) {
+	const std::string separatorChar(" ");
+	const std::string lastColChar("");
+	std::string aux;
+
 	// Activate exceptions
 	out.exceptions(std::ostream::failbit | std::ostream::badbit);
 	
 	for (uint32_t i = 0; i < b.m_rows; i++) {
 		for (uint32_t j = 0; j < b.m_cols; j++) {
-			if (b.cell(i, j).isAlive())
-				out << "O ";
+			if (j < b.m_cols - 1)
+				aux = separatorChar;
 			else
-				out << "X ";
+				aux = lastColChar;
+			if (b[i][j].isAlive())
+				out << Cell::AliveChar << aux;
+			else
+				out << Cell::DeadChar << aux;
 		}	
-		out << std::endl;
+		if (i < b.m_rows - 1)
+			out << std::endl;
 	}	
 	return out;
 }
@@ -316,7 +361,25 @@ bool operator!=(const Board &lhs, const Board &rhs) {
  * @returns a proxy object that will allow the access to a particular element of the row.
  */
 Board::BoardProxy Board::operator[](const uint32_t row) {
-	if (row > m_rows - 1)
+	if (m_rows == 0 || row > m_rows - 1)
+		throw IndexOutOfBounds();
+	return Board::BoardProxy(m_board[row]); 
+}
+
+/**
+ * @brief Proxy that permits the user to access (or modify) the cells of the board 
+ *        with double square brackets. Constant access to the board.
+ *        
+ *        Some examples of use: 
+ *           board[i][j].revive()
+ *           board[i][j].die()
+ *           board[i][j].isAlive()
+ *
+ * @param[in] row Row that the user wants to access.
+ * @returns a proxy object that will allow the access to a particular element of the row.
+ */
+Board::BoardProxy Board::operator[](const uint32_t row) const {
+	if (m_rows == 0 || row > m_rows - 1)
 		throw IndexOutOfBounds();
 	return Board::BoardProxy(m_board[row]); 
 }
