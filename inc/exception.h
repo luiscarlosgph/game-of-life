@@ -9,6 +9,22 @@
 #define EXCEPTION_H_
 
 #include <exception>
+#include <string>
+
+/**
+ * @class CouldNotOpenInputFile represents an exception
+ *        that occurs when the scpecified input file
+ *        cannot be opened.
+ */
+class CouldNotOpenInputFile: public std::exception {
+public:
+	CouldNotOpenInputFile(const std::string &path) : m_path(path) {}
+	virtual const char* what() const throw() {
+		return std::string("ERROR! Unable to open input file -> " + m_path).c_str();
+	}
+private:
+	std::string m_path;
+}; 
 
 /**
  * @class CouldNotReadNumberOfRows represents an exception that is raised when
@@ -44,6 +60,7 @@ public:
 	virtual const char* what() const throw() {
 		return std::string("ERROR! Could not read the row no. " + std::to_string(m_row) + " from the input file provided.").c_str();
 	}
+private:
 	uint32_t m_row;	
 };
 
@@ -80,6 +97,7 @@ public:
 	virtual const char* what() const throw() {
 		return std::string("ERROR! The syntax of the provided row no. " + std::to_string(m_row) + " is incorrect.").c_str();
 	}
+private:
 	uint32_t m_row;	
 };
 

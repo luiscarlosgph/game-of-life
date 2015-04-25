@@ -17,6 +17,7 @@
 #include "board.h"
 #include "commandlinereader.h"
 #include "gameoflife.h"
+#include "exception.h"
 
 // Test Cell class
 TEST_CASE("Successful manipulation of the Cell class", "[Cell]") {
@@ -299,7 +300,6 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		REQUIRE(a[2][2].isAlive() == false);
 		
 		// Test B
-		/*
 		a.reset(3, 3);
 		a[0][0].revive();
 		a[0][1].die();
@@ -346,15 +346,107 @@ TEST_CASE("Successful manipulation of the GameOfLife class", "[GameOfLife]") {
 		REQUIRE(a[2][0].isAlive() == true);
 		REQUIRE(a[2][1].isAlive() == false);
 		REQUIRE(a[2][2].isAlive() == false);
-		*/
 	}
 
 }
 
 TEST_CASE("Test that all the exceptions work", "[exception.h]") {
-	
+
+	Board a;
+	std::ofstream outFile;
+	GameOfLife gol;
+	bool exception;
+	std::string filePath;
+
 	SECTION("Checking access to an index out of bounds for the Board class") {
-		// TODO	
+		exception = false;
+		a.reset(5, 6);
+		try {
+			a[5][7].die();
+		}
+		catch(const IndexOutOfBounds &e) {
+			exception = true;
+		}
+		REQUIRE(exception);
+		exception = false;
+		try {
+			a[7][2].revive();
+		}
+		catch(const IndexOutOfBounds &e) {
+			exception = true;
+		}
+		REQUIRE(exception);
+		exception = false;
+		try {
+			a.cell(9, 4).revive();
+		}
+		catch(const IndexOutOfBounds &e) {
+			exception = true;
+		}
+		REQUIRE(exception);
+		exception = false;
+		try {
+			a.cell(4, 10).revive();
+		}
+		catch(const IndexOutOfBounds &e) {
+			exception = true;
+		}
+		REQUIRE(exception);
+	}
+
+	SECTION("Testing that exceptions are raised for malformed input files") {
+		// Wrong format for the number of rows
+		filePath = "/tmp/.malformed_input_file.tmp";
+		a.reset(4, 5);
+		outFile.open(filePath);	
+		outFile << "4i" << std::endl;
+		outFile << "5" << std::endl;
+		outFile << a;
+		outFile.close();	
+		exception = false;
+		try {
+			gol.readConfig(filePath);
+		}
+		catch(const IncorrectSyntaxForNumberOfRows &e) {
+			exception = true;	
+		}
+		REQUIRE(exception);
+
+		// Wrong format for the number of columns
+		outFile.open(filePath);	
+		outFile << "4" << std::endl;
+		outFile << "5fksldjkdlsjf" << std::endl;
+		outFile << a;
+		outFile.close();
+		exception = false;
+		try {
+			gol.readConfig(filePath);
+		}
+		catch(const IncorrectSyntaxForNumberOfColumns &e) {
+			exception = true;	
+		}
+		REQUIRE(exception);
+
+		// Wrong format for teh specification of a row
+		outFile.open(filePath);	
+		outFile << "4" << std::endl;
+		outFile << "5" << std::endl;
+		outFile << "X O X O X" << std::endl;
+		outFile << "X O X O X" << std::endl;
+		outFile << "X OOX O X" << std::endl;
+		outFile << "X O X O X" << std::endl;
+		outFile.close();
+		exception = false;
+		try {
+			gol.readConfig(filePath);
+		}
+		catch(const IncorrectRowSyntax &e) {
+			exception = true;	
+		}
+		REQUIRE(exception);
+
+		// Remove temporary files
+		remove(filePath.c_str());
 	}
 
 }

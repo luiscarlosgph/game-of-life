@@ -34,15 +34,13 @@ void GameOfLife::readConfig(const std::string &path) {
 	
 	// Sanity check - file is correctly opened
 	if (!inFile.is_open())
-		throw std::runtime_error("ERROR! Unable to open input file -> " + path);
+		throw CouldNotOpenInputFile(path);
 
 	// Read number of rows
 	if (!getline(inFile, line))
 		throw CouldNotReadNumberOfRows(); 
-	if (!std::regex_match(line, sm, UINT_REGEX)) {
-		std::cout << line << "@@" << std::endl;
+	if (!std::regex_match(line, sm, UINT_REGEX)) 
 		throw IncorrectSyntaxForNumberOfRows();
-	}
 	rows = (uint32_t)std::stoul(line); 
 
 	// Read number of columns
