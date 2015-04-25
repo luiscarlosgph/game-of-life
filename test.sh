@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# TODO: if the project has been built...
+echo "Running catch tests... bin/GameOfLifeTest"
 bin/GameOfLifeTest
