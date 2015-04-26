@@ -8,6 +8,8 @@ This program requires:
 
 	- g++ 4.9 with C++11 and OpenMP support. That is, there must exist a binary of g++ with OpenMP
 	  support in '/usr/local/bin/g++'.
+
+	- ffmpeg is required. It is used in the script that converts the output text file to video.
 	  
 	- For MAC OS X users: the folder 'extras/gcc-4.9-bin/' contains the binaries for gcc and g++ 
 	  version 4.9 with OpenMP support for Mac OS X Mavericks and Yosemite downloaded from 
