@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.1.19)  26 APR 2015 01:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.1.19)  26 APR 2015 02:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -410,147 +410,147 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--35
  []
 
 
-Overfull \hbox (18.89929pt too wide) in paragraph at lines 44--45
+Overfull \hbox (18.89929pt too wide) in paragraph at lines 45--46
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 46.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 47.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 46.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 46.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 47.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 47.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 47.
 
-Overfull \hbox (4.79932pt too wide) in paragraph at lines 49--50
+Overfull \hbox (4.79932pt too wide) in paragraph at lines 50--51
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (61.19922pt too wide) in paragraph at lines 55--56
+Overfull \hbox (61.19922pt too wide) in paragraph at lines 56--57
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 [2]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 77.
+(Font)              <12> on input line 78.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 77.
+(Font)              <8> on input line 78.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 77.
+(Font)              <6> on input line 78.
  <graph.png, id=13, 404.712pt x 419.6478pt>
 File: graph.png Graphic file (type png)
  <use graph.png>
-Package pdftex.def Info: graph.png used on input line 125.
+Package pdftex.def Info: graph.png used on input line 126.
 (pdftex.def)             Requested size: 300.0pt x 311.08519pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--126
+Underfull \hbox (badness 10000) in paragraph at lines 66--127
 
  []
 
@@ -558,7 +558,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--126
 Here is how much of TeX's memory you used:
  3751 strings out of 493117
  50269 string characters out of 6135433
- 125714 words of memory out of 5000000
+ 124714 words of memory out of 5000000
  7176 multiletter control sequences out of 15000+600000
  8594 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -569,7 +569,7 @@ nts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (5 pages, 118755 bytes).
+Output written on report.pdf (5 pages, 118747 bytes).
 PDF statistics:
  43 PDF objects out of 1000 (max. 8388607)
  28 compressed objects within 1 object stream
