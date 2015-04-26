@@ -35,8 +35,8 @@ Execute the following commands in the main directory of the project in order to 
 \section*{Run the Program}
 After the program and the tests have been compiled, execute this command to run the program:
 \newline
-\$ build/src/GameOfLife --input test/input.txt --output output.txt \newline
-\$ build/src/GameOfLife --random 100 --output output.txt
+\$ build/src/GameOfLife --input test/input.txt --output output.txt --niter 100\newline
+\$ build/src/GameOfLife --random 100 --output output.txt --niter 100
 \section*{Parallelisation}
 The code has been parallelised using OpenMP. The part of the code that has been parallelised is the method evolve() of the Board class since each cell is updated  based exclusively on the previous state of the cells in its neighbourhood, which does not change while the other cells are being updated.
 \begin{lstlisting}
