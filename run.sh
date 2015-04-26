@@ -1,8 +1,10 @@
 #!/bin/bash
 
 # Run Game of Life with test/input.txt as input file and 10 iterations -> output.txt
-rm output.txt
 CMD1="bin/GameOfLife --niter 10 --input test/input.txt --output output.txt"
+if [ -f output.txt ]; then
+	rm output.txt
+fi
 echo "Running program with an input file that specifies domain size and initial state..."
 echo ""
 echo $CMD1
@@ -18,8 +20,10 @@ echo ""
 $CMD2
 
 # Run 100 iterations of Game of Life with a board of 100x100 -> output_random.txt
-rm output_random.txt
 CMD3="bin/GameOfLife --random 100 --niter 100 --output output_random.txt"
+if [ -f output_random.txt ]; then
+	rm output_random.txt
+fi
 echo "Running program with random input..."
 echo ""
 echo $CMD3
