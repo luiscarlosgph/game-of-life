@@ -67,10 +67,11 @@ $ ./run.sh
 ```
 
 These four steps are executed with the previous script:
-1. Run Game of Life with the file 'test/input.txt' as input and generates the output in 'output.txt'
-2. Convert 'output.txt' to 'output.mp4' so that you can see a video of the execution of the game
-3. Run Game of Life with a random input board and 100 iterations and generate 'output_random.txt'
-4. Convert 'output_random.txt' to video so that you can see the execution of the randomly initialised game.
+
+1. Run Game of Life with the file 'test/input.txt' as input and generates the output in 'output.txt'.  
+2. Convert 'output.txt' to 'output.mp4' so that you can see a video of the execution of the game.  
+3. Run Game of Life with a random input board and 100 iterations and generate 'output_random.txt'  
+4. Convert 'output_random.txt' to video so that you can see the execution of the randomly initialised game.  
 
 These are other examples on how to run the program:
 
