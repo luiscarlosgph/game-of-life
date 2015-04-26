@@ -6,8 +6,8 @@ Game of Life coursework for the module Research Computing with C++.
 
 This program requires:
 
-	- g++ with C++11 and OpenMP support. That is, there must exist a binary of g++ with OpenMP
-	   support in '/usr/local/bin/g++'.
+	- g++ 4.9 with C++11 and OpenMP support. That is, there must exist a binary of g++ with OpenMP
+	  support in '/usr/local/bin/g++'.
 	  
 	- For MAC OS X users: the folder 'extras/gcc-4.9-bin/' contains the binaries for gcc and g++ 
 	  version 4.9 with OpenMP support for Mac OS X Mavericks and Yosemite downloaded from 
@@ -22,6 +22,12 @@ This program requires:
 	  $ cd workdir
 	  $ tar -xzf gcc-4.9-bin.tar.gz
 	  $ sudo rsync -vah usr/* /usr/
+	
+	- For Linux users:
+
+	  $ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+	  $ sudo apt-get update
+	  $ sudo apt-get install g++-4.9
 
 # Build Instructions
 
