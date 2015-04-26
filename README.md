@@ -7,7 +7,8 @@ Game of Life coursework for the module Research Computing with C++.
 This program requires:
 
 	- g++ 4.9 with C++11 and OpenMP support. That is, there must exist a binary of g++ with OpenMP
-	  support in '/usr/local/bin/g++'.
+	  support in '/usr/bin/g++' (when compiling under Linux) and '/usr/local/bin/g++' (when compiling 
+	  under MAC OS X).
 
 	- ffmpeg is required. It is used in the script that converts the output text file to video.
 	  
