@@ -11,8 +11,9 @@ This program requires:
 
 	- ffmpeg is required. It is used in the script that converts the output text file to video.
 	  
-	- For MAC OS X users: the folder 'extras/gcc-4.9-bin/' contains the binaries for gcc and g++ 
-	  version 4.9 with OpenMP support for Mac OS X Mavericks and Yosemite downloaded from 
+	- For MAC OS X users (tested only in Mavericks): the folder 'extras/gcc-4.9-bin/' contains the 
+	  binaries for gcc and g++ version 4.9 with OpenMP support for Mac OS X Mavericks and Yosemite 
+	  downloaded from:
 	  
 	  http://hpc.sourceforge.net/
 
@@ -25,11 +26,14 @@ This program requires:
 	  $ tar -xzf gcc-4.9-bin.tar.gz
 	  $ sudo rsync -vah usr/* /usr/
 	
-	- For Linux users:
+	- For Linux users (tested only in Ubuntu 14.04):
 
 	  $ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+	  $ sudo add-apt-repository ppa:jon-severinsson/ffmpeg
 	  $ sudo apt-get update
 	  $ sudo apt-get install g++-4.9
+	  $ sudo apt-get install ffmpeg
+	  $ sudo apt-get install frei0r-plugins
 
 # Build Instructions
 
